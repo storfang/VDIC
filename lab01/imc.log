@@ -1,0 +1,17 @@
+imc: *I,RUNLD: Successfully loaded run /home/student/moleszkowicz/VDIC/lab01/cov_work/scope/lab01.
+imc: *I,MERGL1: Merging Simulation Coverage ...
+----------------------------
+imc: *I,MERGL1: Preparing target model ...
+imc: *I,MERGL1: Reading model of primary run (cov_work/scope/lab01) as initial model: cov_work/scope/icc_4855a52a_2d5c3989.ucm
+imc: *I,MERGL1: Target model generated successfully.
+imc: *I,MERGL1: Projecting Simulation ucd data into the target model ...
+imc: *I,MERGL2:   cov_work/scope/lab01:
+imc: *I,MERGL3:       Data is projected in to the target model.
+imc: *I,MERGL1: Writing output database cov_work/scope/merged_results:
+imc: *I,MERGL2:   Model: cov_work/scope/merged_results/icc_4855a52a_2d5c3989.ucm
+imc: *I,MERGL2:   Data : cov_work/scope/merged_results/icc_4855a52a_2d5c3989.ucd
+imc: *I,MERGL1: No Specman coverage databases found in the runs.
+Total conflicts during target model creation: 0
+Total items not merged                      : 0
+Total runs not considered during target model creation: 0
+Total runs not merged                                 : 0

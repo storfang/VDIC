@@ -1,0 +1,796 @@
+TOOL:	xrun	19.09-s003: Started on Oct 17, 2020 at 11:02:04 CEST
+xrun
+	-f dut_alu.f
+		mtm_Alu.vp
+	-f tb_alu.f
+		alu_tb.sv
+	-v93
+	+nowarnDSEM2009
+	+nowarnDSEMEL
+	+nowarnCGDEFN
+	-xmlibdirname INCA_libs_gui
+	+access+r
+	+gui
+	+overwrite
+	-nocopyright
+	-coverage all
+	-covoverwrite
+	-covfile xrun_covfile.txt
+	-covtest lab01
+	-l xrun_gui.log
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /cad/XCELIUM1909/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm top.A top.B top.CTL top.clk top.data top.done top.g top.i top.j top.j_nxt top.k top.l top.l_nxt top.op top.op_set top.out top.out_nxt top.pass top.passes top.result top.rst_n top.sin top.sout
+Created probe 1
+xcelium> reset
+xmsim: *W,C58RST: Reset command executed. Coverage is enabled for the subsequent simulation run.  The coverage test name needs to be changed to prevent data overwrite, and any coverage control commands previously used must be reissued.
+Loaded snapshot worklib.top:sv
+xcelium> run
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 4041 NS).
+top.scoreboard
+FAILED: A: 9  B: d  op: add_op result: 0 predicted_result: 16
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 9021 NS).
+top.scoreboard
+FAILED: A: 12  B: d  op: sub_op result: c9ffffff predicted_result: 5
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 14061 NS).
+top.scoreboard
+FAILED: A: ffffffbd  B: 65  op: sub_op result: a8 predicted_result: ffffff58
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 19061 NS).
+top.scoreboard
+FAILED: A: 13  B: 53  op: sub_op result: 40 predicted_result: ffffffc0
+PASSED ffffffbe op: or_op
+PASSED ffffff90 op: add_op
+PASSED ffffffff op: or_op
+PASSED ffffffcc op: or_op
+PASSED fffffffb op: or_op
+PASSED 00000025 op: add_op
+PASSED ffffffff op: or_op
+PASSED fffffff6 op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 64181 NS).
+top.scoreboard
+FAILED: A: 4  B: 69  op: sub_op result: 65 predicted_result: ffffff9b
+PASSED ffffffef op: add_op
+PASSED 00000040 op: add_op
+PASSED ffffffba op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 84121 NS).
+top.scoreboard
+FAILED: A: ffffffb9  B: ffffff96  op: sub_op result: ffffffdd predicted_result: 23
+PASSED ffffff94 op: and_op
+PASSED ffffffe1 op: or_op
+PASSED fffffffb op: or_op
+PASSED fffffff7 op: add_op
+PASSED ffffffee op: or_op
+PASSED 00000003 op: and_op
+PASSED ffffff78 op: add_op
+PASSED ffffff8f op: or_op
+PASSED 0000000a op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 134061 NS).
+top.scoreboard
+FAILED: A: 18  B: ffffff86  op: sub_op result: ffffff6e predicted_result: 92
+PASSED ffffffde op: or_op
+PASSED fffffffb op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 149141 NS).
+top.scoreboard
+FAILED: A: 7c  B: fffffffe  op: sub_op result: ffffff82 predicted_result: 7e
+PASSED 00000000 op: and_op
+PASSED ffffffc0 op: and_op
+PASSED ffffffda op: add_op
+PASSED ffffffad op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 174101 NS).
+top.scoreboard
+FAILED: A: ffffffa0  B: ffffffb4  op: sub_op result: 14 predicted_result: ffffffec
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 179081 NS).
+top.scoreboard
+FAILED: A: 4b  B: ffffff9e  op: sub_op result: ffffff53 predicted_result: ad
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 184061 NS).
+top.scoreboard
+FAILED: A: ffffff8f  B: ffffffe3  op: sub_op result: 54 predicted_result: ffffffac
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 189041 NS).
+top.scoreboard
+FAILED: A: 44  B: ffffffe0  op: sub_op result: ffffff9c predicted_result: 64
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 194021 NS).
+top.scoreboard
+FAILED: A: fffffff8  B: 52  op: sub_op result: 5a predicted_result: ffffffa6
+PASSED ffffffa3 op: add_op
+PASSED ffffff3a op: add_op
+PASSED 00000008 op: and_op
+PASSED ffffffef op: or_op
+PASSED ffffff1f op: add_op
+PASSED ffffffb3 op: or_op
+PASSED 0000008b op: add_op
+PASSED ffffffff op: or_op
+PASSED ffffff55 op: add_op
+PASSED ffffffff op: or_op
+PASSED 00000005 op: and_op
+PASSED ffffff85 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 258961 NS).
+top.scoreboard
+FAILED: A: 64  B: ffffffe1  op: sub_op result: ffffff7d predicted_result: 83
+PASSED 0000000d op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 269021 NS).
+top.scoreboard
+FAILED: A: ffffffe5  B: ffffffc9  op: sub_op result: ffffffe4 predicted_result: 1c
+PASSED fffffffb op: or_op
+PASSED 00000024 op: and_op
+PASSED 00000034 op: add_op
+PASSED fffffff7 op: or_op
+PASSED 00000007 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 299001 NS).
+top.scoreboard
+FAILED: A: ffffffbc  B: ffffffc0  op: sub_op result: 4 predicted_result: fffffffc
+PASSED 00000045 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 308961 NS).
+top.scoreboard
+FAILED: A: 6a  B: ffffffb8  op: sub_op result: ffffff4e predicted_result: b2
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 313961 NS).
+top.scoreboard
+FAILED: A: 45  B: 59  op: sub_op result: 14 predicted_result: ffffffec
+PASSED 0000001a op: add_op
+PASSED ffffff8c op: and_op
+PASSED 00000057 op: add_op
+PASSED 000000af op: add_op
+PASSED ffffffd8 op: add_op
+PASSED ffffffd7 op: add_op
+PASSED ffffff9d op: or_op
+PASSED 00000068 op: add_op
+PASSED 00000000 op: and_op
+PASSED 0000005f op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 369001 NS).
+top.scoreboard
+FAILED: A: ffffff85  B: ffffffc9  op: sub_op result: 44 predicted_result: ffffffbc
+PASSED 00000018 op: and_op
+PASSED 00000050 op: and_op
+PASSED 00000005 op: and_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 393921 NS).
+top.scoreboard
+FAILED: A: 40  B: 54  op: sub_op result: 14 predicted_result: ffffffec
+PASSED ffffffc0 op: and_op
+PASSED 0000000b op: and_op
+PASSED ffffff80 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 413861 NS).
+top.scoreboard
+FAILED: A: 1a  B: ffffff82  op: sub_op result: ffffff68 predicted_result: 98
+PASSED 00000021 op: and_op
+PASSED 00000050 op: and_op
+PASSED 0000005f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 433861 NS).
+top.scoreboard
+FAILED: A: ffffffd4  B: 7e  op: sub_op result: aa predicted_result: ffffff56
+PASSED 00000020 op: and_op
+PASSED 00000018 op: add_op
+PASSED ffffffff op: or_op
+PASSED 0000005d op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 458881 NS).
+top.scoreboard
+FAILED: A: fffffff1  B: ffffffaf  op: sub_op result: ffffffbe predicted_result: 42
+PASSED ffffffc0 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 468901 NS).
+top.scoreboard
+FAILED: A: ffffffb4  B: ffffff89  op: sub_op result: ffffffd5 predicted_result: 2b
+PASSED 00000022 op: and_op
+PASSED ffffffd6 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 484021 NS).
+top.scoreboard
+FAILED: A: ffffffdd  B: ffffff8f  op: sub_op result: ffffffb2 predicted_result: 4e
+PASSED ffffffbd op: or_op
+PASSED ffffffc3 op: add_op
+PASSED ffffff84 op: and_op
+PASSED ffffff9b op: or_op
+PASSED 000000a6 op: add_op
+PASSED ffffffaf op: or_op
+PASSED ffffffc0 op: and_op
+PASSED ffffffdf op: or_op
+PASSED ffffffff op: or_op
+PASSED 0000007a op: or_op
+PASSED 0000002d op: or_op
+PASSED 0000001d op: add_op
+PASSED 0000007f op: or_op
+PASSED 00000000 op: and_op
+PASSED 0000005f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 564021 NS).
+top.scoreboard
+FAILED: A: 58  B: 2f  op: sub_op result: ffffffd7 predicted_result: 29
+PASSED 00000066 op: add_op
+PASSED ffffffcd op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 579041 NS).
+top.scoreboard
+FAILED: A: ffffffb8  B: a  op: sub_op result: 52 predicted_result: ffffffae
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 584021 NS).
+top.scoreboard
+FAILED: A: fffffff1  B: ffffffe5  op: sub_op result: fffffff4 predicted_result: c
+PASSED 0000008b op: add_op
+PASSED 000000ac op: add_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 604001 NS).
+top.scoreboard
+FAILED: A: 76  B: ffffffb4  op: sub_op result: ffffff3e predicted_result: c2
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 608981 NS).
+top.scoreboard
+FAILED: A: 46  B: ffffff9e  op: sub_op result: ffffff58 predicted_result: a8
+PASSED ffffff80 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 618981 NS).
+top.scoreboard
+FAILED: A: ffffffb8  B: ffffffd6  op: sub_op result: 1e predicted_result: ffffffe2
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 623961 NS).
+top.scoreboard
+FAILED: A: ffffffcf  B: 40  op: sub_op result: 71 predicted_result: ffffff8f
+PASSED ffffff8d op: or_op
+PASSED ffffffe3 op: add_op
+PASSED ffffffde op: or_op
+PASSED ffffffbb op: or_op
+PASSED 00000054 op: and_op
+PASSED ffffffbb op: or_op
+PASSED fffffffb op: or_op
+PASSED ffffffaf op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 668921 NS).
+top.scoreboard
+FAILED: A: d  B: 74  op: sub_op result: 67 predicted_result: ffffff99
+PASSED 000000c7 op: add_op
+PASSED 00000007 op: and_op
+PASSED 00000011 op: and_op
+PASSED fffffff2 op: add_op
+PASSED fffffff9 op: or_op
+PASSED 00000040 op: and_op
+PASSED ffffffc8 op: and_op
+PASSED 0000003f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 713941 NS).
+top.scoreboard
+FAILED: A: 5  B: ffffffe8  op: sub_op result: ffffffe3 predicted_result: 1d
+PASSED 00000017 op: and_op
+PASSED ffffff7a op: add_op
+PASSED ffffff1b op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 733881 NS).
+top.scoreboard
+FAILED: A: 15  B: 36  op: sub_op result: 21 predicted_result: ffffffdf
+PASSED 000000e5 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 743961 NS).
+top.scoreboard
+FAILED: A: 25  B: fffffff3  op: sub_op result: ffffffce predicted_result: 32
+PASSED ffffff80 op: and_op
+PASSED ffffffa8 op: or_op
+PASSED 0000007b op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 763921 NS).
+top.scoreboard
+FAILED: A: b  B: ffffff8f  op: sub_op result: ffffff84 predicted_result: 7c
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 768941 NS).
+top.scoreboard
+FAILED: A: ffffffeb  B: 29  op: sub_op result: 3e predicted_result: ffffffc2
+PASSED ffffffbf op: or_op
+PASSED ffffff52 op: add_op
+PASSED 00000037 op: or_op
+PASSED fffffff7 op: or_op
+PASSED ffffffb0 op: add_op
+PASSED fffffff2 op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 804001 NS).
+top.scoreboard
+FAILED: A: 17  B: 11  op: sub_op result: fffffffa predicted_result: 6
+PASSED fffffffa op: or_op
+PASSED ffffffdf op: or_op
+PASSED ffffffa8 op: and_op
+PASSED ffffff8d op: and_op
+PASSED 0000001e op: or_op
+PASSED 0000002a op: and_op
+PASSED fffffffe op: or_op
+PASSED ffffff71 op: add_op
+PASSED 00000046 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 854141 NS).
+top.scoreboard
+FAILED: A: 3e  B: 9  op: sub_op result: ffffffcb predicted_result: 35
+PASSED 0000003c op: add_op
+PASSED 00000055 op: or_op
+PASSED ffffffef op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 874161 NS).
+top.scoreboard
+FAILED: A: 25  B: ffffffed  op: sub_op result: ffffffc8 predicted_result: 38
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 879161 NS).
+top.scoreboard
+FAILED: A: 43  B: ffffffa7  op: sub_op result: ffffff64 predicted_result: 9c
+PASSED ffffffc1 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 889141 NS).
+top.scoreboard
+FAILED: A: 76  B: ffffffa2  op: sub_op result: ffffff2c predicted_result: d4
+PASSED fffffff0 op: add_op
+PASSED fffffffd op: or_op
+PASSED ffffffea op: or_op
+PASSED 00000085 op: add_op
+PASSED 00000077 op: or_op
+PASSED ffffffe9 op: add_op
+PASSED 00000090 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 929141 NS).
+top.scoreboard
+FAILED: A: ffffffcf  B: ffffffef  op: sub_op result: 20 predicted_result: ffffffe0
+PASSED 0000001b op: add_op
+PASSED 00000009 op: add_op
+PASSED fffffff4 op: or_op
+PASSED fffffff8 op: add_op
+PASSED ffffffff op: or_op
+PASSED ffffffbc op: or_op
+PASSED 00000002 op: or_op
+PASSED ffffffd4 op: and_op
+PASSED 00000000 op: and_op
+PASSED ffffffb4 op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000037 op: or_op
+PASSED ffffff6a op: add_op
+PASSED ffffffb1 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1004141 NS).
+top.scoreboard
+FAILED: A: ffffffc2  B: ffffffe0  op: sub_op result: 1e predicted_result: ffffffe2
+PASSED ffffffee op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1014101 NS).
+top.scoreboard
+FAILED: A: 3c  B: a  op: sub_op result: ffffffce predicted_result: 32
+PASSED ffffffaf op: or_op
+PASSED ffffffb8 op: or_op
+PASSED 0000008c op: add_op
+PASSED ffffffaf op: or_op
+PASSED 00000042 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1044001 NS).
+top.scoreboard
+FAILED: A: 58  B: ffffff94  op: sub_op result: ffffff3c predicted_result: c4
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1048981 NS).
+top.scoreboard
+FAILED: A: ffffffb1  B: ffffff88  op: sub_op result: ffffffd7 predicted_result: 29
+PASSED 00000011 op: and_op
+PASSED ffffffe3 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1063961 NS).
+top.scoreboard
+FAILED: A: 5d  B: 7  op: sub_op result: ffffffaa predicted_result: 56
+PASSED 00000004 op: and_op
+PASSED 00000000 op: and_op
+PASSED ffffff85 op: and_op
+PASSED 00000031 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1089021 NS).
+top.scoreboard
+FAILED: A: ffffff90  B: ffffff82  op: sub_op result: fffffff2 predicted_result: e
+PASSED 00000014 op: and_op
+PASSED 00000020 op: and_op
+PASSED 00000008 op: and_op
+PASSED 00000014 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1113961 NS).
+top.scoreboard
+FAILED: A: 23  B: 2a  op: sub_op result: 7 predicted_result: fffffff9
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1118961 NS).
+top.scoreboard
+FAILED: A: 7b  B: 5f  op: sub_op result: ffffffe4 predicted_result: 1c
+PASSED 0000007f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1129021 NS).
+top.scoreboard
+FAILED: A: ffffffa8  B: ffffffe6  op: sub_op result: 3e predicted_result: ffffffc2
+PASSED 00000082 op: add_op
+PASSED ffffff97 op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1143961 NS).
+top.scoreboard
+FAILED: A: 7b  B: fffffff8  op: sub_op result: ffffff7d predicted_result: 83
+PASSED 0000006f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1153941 NS).
+top.scoreboard
+FAILED: A: 6  B: ffffffac  op: sub_op result: ffffffa6 predicted_result: 5a
+PASSED ffffff69 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1163941 NS).
+top.scoreboard
+FAILED: A: ffffff9c  B: 4  op: sub_op result: 68 predicted_result: ffffff98
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1168961 NS).
+top.scoreboard
+FAILED: A: 72  B: a  op: sub_op result: ffffff98 predicted_result: 68
+PASSED 00000029 op: add_op
+PASSED fffffffd op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1183941 NS).
+top.scoreboard
+FAILED: A: 46  B: ffffffc2  op: sub_op result: ffffff7c predicted_result: 84
+PASSED ffffffe1 op: add_op
+PASSED ffffffc9 op: add_op
+PASSED 00000024 op: and_op
+PASSED 0000004b op: add_op
+PASSED 0000000a op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1213961 NS).
+top.scoreboard
+FAILED: A: 43  B: ffffffa0  op: sub_op result: ffffff5d predicted_result: a3
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1218961 NS).
+top.scoreboard
+FAILED: A: ffffffc9  B: 2e  op: sub_op result: 65 predicted_result: ffffff9b
+PASSED 00000018 op: and_op
+PASSED 0000007f op: or_op
+PASSED ffffff80 op: and_op
+PASSED fffffffb op: or_op
+PASSED ffffffdb op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1248941 NS).
+top.scoreboard
+FAILED: A: ffffffb7  B: 15  op: sub_op result: 5e predicted_result: ffffffa2
+PASSED fffffffe op: or_op
+PASSED 00000020 op: and_op
+PASSED ffffffaf op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000063 op: add_op
+PASSED fffffffb op: or_op
+PASSED ffffffbf op: or_op
+PASSED 00000000 op: and_op
+PASSED 00000040 op: and_op
+PASSED ffffffbb op: add_op
+PASSED 00000021 op: and_op
+PASSED 00000040 op: and_op
+PASSED 00000011 op: and_op
+PASSED fffffff8 op: or_op
+PASSED ffffff42 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1329141 NS).
+top.scoreboard
+FAILED: A: 14  B: ffffffce  op: sub_op result: ffffffba predicted_result: 46
+PASSED 00000056 op: and_op
+PASSED ffffffdd op: or_op
+PASSED 00000011 op: and_op
+PASSED 00000009 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1354161 NS).
+top.scoreboard
+FAILED: A: ffffff8b  B: 68  op: sub_op result: dd predicted_result: ffffff23
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1359181 NS).
+top.scoreboard
+FAILED: A: ffffffb8  B: 27  op: sub_op result: 6f predicted_result: ffffff91
+PASSED ffffffbe op: or_op
+PASSED 0000007f op: or_op
+PASSED 0000004b op: and_op
+PASSED ffffffe8 op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1384141 NS).
+top.scoreboard
+FAILED: A: ffffffd4  B: 32  op: sub_op result: 5e predicted_result: ffffffa2
+PASSED ffffffaf op: or_op
+PASSED ffffff98 op: and_op
+PASSED 0000007f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1404301 NS).
+top.scoreboard
+FAILED: A: ffffff82  B: 40  op: sub_op result: be predicted_result: ffffff42
+PASSED ffffff6d op: add_op
+PASSED 0000000c op: and_op
+PASSED ffffffde op: or_op
+PASSED 00000010 op: and_op
+PASSED ffffff72 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1434221 NS).
+top.scoreboard
+FAILED: A: 3b  B: c  op: sub_op result: ffffffd1 predicted_result: 2f
+PASSED ffffffb5 op: and_op
+PASSED 00000018 op: and_op
+PASSED fffffffb op: or_op
+PASSED ffffff86 op: add_op
+PASSED 00000091 op: add_op
+PASSED 0000008a op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1469261 NS).
+top.scoreboard
+FAILED: A: ffffffd4  B: 12  op: sub_op result: 3e predicted_result: ffffffc2
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1474241 NS).
+top.scoreboard
+FAILED: A: ffffffad  B: ffffffbf  op: sub_op result: 12 predicted_result: ffffffee
+PASSED ffffff81 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1484281 NS).
+top.scoreboard
+FAILED: A: 2e  B: 41  op: sub_op result: 13 predicted_result: ffffffed
+PASSED 00000055 op: add_op
+PASSED 0000003a op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1499221 NS).
+top.scoreboard
+FAILED: A: 24  B: ffffffbc  op: sub_op result: ffffff98 predicted_result: 68
+PASSED fffffffb op: or_op
+PASSED ffffff84 op: and_op
+PASSED 00000002 op: and_op
+PASSED ffffffef op: or_op
+PASSED 0000000a op: and_op
+PASSED ffffffef op: or_op
+PASSED ffffffef op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000051 op: add_op
+PASSED fffffff7 op: add_op
+PASSED ffffffdf op: or_op
+PASSED ffffffd6 op: add_op
+PASSED 00000076 op: or_op
+PASSED 00000020 op: and_op
+PASSED 00000020 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1579201 NS).
+top.scoreboard
+FAILED: A: ffffff92  B: ffffffc8  op: sub_op result: 36 predicted_result: ffffffca
+PASSED ffffff64 op: add_op
+PASSED ffffffef op: or_op
+PASSED 00000020 op: and_op
+PASSED 0000001b op: add_op
+PASSED ffffffad op: or_op
+PASSED 00000005 op: add_op
+PASSED 00000030 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1619181 NS).
+top.scoreboard
+FAILED: A: ffffff86  B: ffffffb4  op: sub_op result: 2e predicted_result: ffffffd2
+PASSED 00000000 op: and_op
+PASSED fffffff7 op: or_op
+PASSED ffffff81 op: and_op
+PASSED fffffffd op: or_op
+PASSED ffffffbf op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1649161 NS).
+top.scoreboard
+FAILED: A: 44  B: fffffffa  op: sub_op result: ffffffb6 predicted_result: 4a
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1654141 NS).
+top.scoreboard
+FAILED: A: ffffff83  B: ffffff9d  op: sub_op result: 1a predicted_result: ffffffe6
+PASSED 0000001a op: or_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+PASSED ffffffc4 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1679181 NS).
+top.scoreboard
+FAILED: A: 1f  B: 43  op: sub_op result: 24 predicted_result: ffffffdc
+PASSED ffffffe0 op: add_op
+PASSED fffffff4 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1694201 NS).
+top.scoreboard
+FAILED: A: 9  B: 7  op: sub_op result: fffffffe predicted_result: 2
+PASSED 00000021 op: and_op
+PASSED 0000001e op: add_op
+PASSED fffffffd op: or_op
+PASSED 0000000a op: and_op
+PASSED 0000003f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1724141 NS).
+top.scoreboard
+FAILED: A: ffffffb0  B: ffffffa5  op: sub_op result: fffffff5 predicted_result: b
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1729141 NS).
+top.scoreboard
+FAILED: A: ffffffab  B: 5e  op: sub_op result: b3 predicted_result: ffffff4d
+PASSED 00000000 op: and_op
+PASSED ffffff84 op: and_op
+PASSED ffffffbc op: add_op
+PASSED ffffffed op: or_op
+PASSED 00000092 op: add_op
+PASSED 00000073 op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1764081 NS).
+top.scoreboard
+FAILED: A: ffffffd7  B: 70  op: sub_op result: 99 predicted_result: ffffff67
+PASSED ffffff84 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1774041 NS).
+top.scoreboard
+FAILED: A: 7c  B: ffffff94  op: sub_op result: ffffff18 predicted_result: e8
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1779181 NS).
+top.scoreboard
+FAILED: A: ffffffc1  B: 1e  op: sub_op result: 5d predicted_result: ffffffa3
+PASSED 00000020 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1789281 NS).
+top.scoreboard
+FAILED: A: ffffffe2  B: 78  op: sub_op result: 96 predicted_result: ffffff6a
+PASSED ffffffc0 op: and_op
+PASSED 00000035 op: add_op
+PASSED ffffffba op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1809281 NS).
+top.scoreboard
+FAILED: A: 7f  B: 7e  op: sub_op result: ffffffff predicted_result: 1
+PASSED 0000006c op: add_op
+PASSED fffffff7 op: or_op
+PASSED 00000091 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1829261 NS).
+top.scoreboard
+FAILED: A: ffffff9d  B: ffffff84  op: sub_op result: ffffffe7 predicted_result: 19
+PASSED 00000001 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1839221 NS).
+top.scoreboard
+FAILED: A: 18  B: fffffffa  op: sub_op result: ffffffe2 predicted_result: 1e
+PASSED 0000006e op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1849201 NS).
+top.scoreboard
+FAILED: A: ffffff82  B: 77  op: sub_op result: f5 predicted_result: ffffff0b
+PASSED 00000040 op: and_op
+PASSED ffffffbd op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1864161 NS).
+top.scoreboard
+FAILED: A: ffffffaf  B: ffffffea  op: sub_op result: 3b predicted_result: ffffffc5
+PASSED 00000038 op: or_op
+PASSED 00000089 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1879181 NS).
+top.scoreboard
+FAILED: A: 6d  B: ffffffc7  op: sub_op result: ffffff5a predicted_result: a6
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1889181 NS).
+top.scoreboard
+FAILED: A: a  B: ffffffa9  op: sub_op result: ffffff9f predicted_result: 61
+PASSED ffffffeb op: or_op
+PASSED ffffff49 op: add_op
+PASSED 00000000 op: and_op
+PASSED ffffff91 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1914161 NS).
+top.scoreboard
+FAILED: A: ffffffec  B: 73  op: sub_op result: 87 predicted_result: ffffff79
+PASSED 0000005a op: add_op
+PASSED ffffffcf op: or_op
+PASSED 00000000 op: and_op
+PASSED 0000007f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1939121 NS).
+top.scoreboard
+FAILED: A: 39  B: fffffff1  op: sub_op result: ffffffb8 predicted_result: 48
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1944101 NS).
+top.scoreboard
+FAILED: A: ffffff93  B: 64  op: sub_op result: d1 predicted_result: ffffff2f
+PASSED ffffff8e op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1954121 NS).
+top.scoreboard
+FAILED: A: 47  B: ffffffe7  op: sub_op result: ffffffa0 predicted_result: 60
+PASSED ffffffe8 op: add_op
+PASSED 0000006d op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1969061 NS).
+top.scoreboard
+FAILED: A: fffffff3  B: ffffffb6  op: sub_op result: ffffffc3 predicted_result: 3d
+PASSED 00000000 op: and_op
+PASSED 00000040 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1984021 NS).
+top.scoreboard
+FAILED: A: 57  B: 6b  op: sub_op result: 14 predicted_result: ffffffec
+PASSED 00000095 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 1994021 NS).
+top.scoreboard
+FAILED: A: 39  B: ffffff87  op: sub_op result: ffffff4e predicted_result: b2
+PASSED ffffffd4 op: and_op
+PASSED ffffffd6 op: add_op
+PASSED 00000002 op: and_op
+PASSED 0000002e op: and_op
+PASSED fffffff5 op: or_op
+PASSED ffffff4c op: add_op
+PASSED ffffff9d op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2033981 NS).
+top.scoreboard
+FAILED: A: 76  B: ffffffa4  op: sub_op result: ffffff2e predicted_result: d2
+PASSED ffffff98 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2043941 NS).
+top.scoreboard
+FAILED: A: ffffffb8  B: 1c  op: sub_op result: 64 predicted_result: ffffff9c
+PASSED ffffff80 op: and_op
+PASSED 00000000 op: and_op
+PASSED 0000000c op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2063861 NS).
+top.scoreboard
+FAILED: A: ffffff8a  B: 1d  op: sub_op result: 93 predicted_result: ffffff6d
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2068841 NS).
+top.scoreboard
+FAILED: A: ffffffe0  B: d  op: sub_op result: 2d predicted_result: ffffffd3
+PASSED 00000045 op: add_op
+PASSED 00000000 op: sub_op
+PASSED 0000007e op: or_op
+PASSED ffffff81 op: and_op
+PASSED 00000040 op: and_op
+PASSED 00000077 op: or_op
+PASSED ffffffb3 op: or_op
+PASSED 00000010 op: and_op
+PASSED ffffffa9 op: and_op
+PASSED ffffff87 op: add_op
+PASSED 00000064 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2128901 NS).
+top.scoreboard
+FAILED: A: ffffffc6  B: ffffffdd  op: sub_op result: 17 predicted_result: ffffffe9
+PASSED ffffffdf op: add_op
+PASSED 00000026 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2143861 NS).
+top.scoreboard
+FAILED: A: ffffffbd  B: 45  op: sub_op result: 88 predicted_result: ffffff78
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2148921 NS).
+top.scoreboard
+FAILED: A: 2b  B: 39  op: sub_op result: e predicted_result: fffffff2
+PASSED 00000018 op: and_op
+PASSED ffffffee op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2163901 NS).
+top.scoreboard
+FAILED: A: ffffff8a  B: 74  op: sub_op result: ea predicted_result: ffffff16
+PASSED 00000001 op: add_op
+PASSED ffffff98 op: add_op
+PASSED fffffff3 op: or_op
+PASSED 0000005e op: add_op
+PASSED ffffffb1 op: or_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2203841 NS).
+top.scoreboard
+FAILED: A: 3  B: 18  op: sub_op result: 15 predicted_result: ffffffeb
+PASSED 0000003f op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2213821 NS).
+top.scoreboard
+FAILED: A: ffffffb0  B: 29  op: sub_op result: 79 predicted_result: ffffff87
+PASSED ffffffff op: or_op
+PASSED 0000007f op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2228801 NS).
+top.scoreboard
+FAILED: A: 6f  B: ffffff91  op: sub_op result: ffffff22 predicted_result: de
+PASSED 00000010 op: and_op
+PASSED 0000000f op: add_op
+PASSED ffffff90 op: add_op
+PASSED fffffff7 op: or_op
+PASSED 00000042 op: and_op
+PASSED ffffff98 op: and_op
+PASSED fffffff8 op: add_op
+PASSED 00000008 op: add_op
+PASSED ffffffdf op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2278721 NS).
+top.scoreboard
+FAILED: A: 0  B: 35  op: sub_op result: 35 predicted_result: ffffffcb
+PASSED ffffff34 op: add_op
+PASSED 00000038 op: and_op
+PASSED ffffff85 op: and_op
+PASSED 0000004b op: and_op
+PASSED ffffffed op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2308661 NS).
+top.scoreboard
+FAILED: A: 11  B: 7a  op: sub_op result: 69 predicted_result: ffffff97
+PASSED 00000004 op: and_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2323621 NS).
+top.scoreboard
+FAILED: A: 20  B: 45  op: sub_op result: 25 predicted_result: ffffffdb
+PASSED 00000008 op: and_op
+PASSED 00000028 op: and_op
+PASSED ffffffaa op: add_op
+PASSED 000000a5 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2348661 NS).
+top.scoreboard
+FAILED: A: 1a  B: 5c  op: sub_op result: 42 predicted_result: ffffffbe
+PASSED 00000010 op: and_op
+PASSED 00000052 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2363601 NS).
+top.scoreboard
+FAILED: A: 55  B: ffffff8e  op: sub_op result: ffffff39 predicted_result: c7
+PASSED 00000008 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2373681 NS).
+top.scoreboard
+FAILED: A: 30  B: ffffffba  op: sub_op result: ffffff8a predicted_result: 76
+PASSED 00000074 op: and_op
+PASSED 0000000c op: and_op
+PASSED ffffffbf op: or_op
+PASSED 0000009e op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2398721 NS).
+top.scoreboard
+FAILED: A: ffffffb6  B: 5a  op: sub_op result: a4 predicted_result: ffffff5c
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2403721 NS).
+top.scoreboard
+FAILED: A: 34  B: 4d  op: sub_op result: 19 predicted_result: ffffffe7
+PASSED ffffffbf op: or_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2418761 NS).
+top.scoreboard
+FAILED: A: 4d  B: ffffffae  op: sub_op result: ffffff61 predicted_result: 9f
+PASSED ffffffc7 op: add_op
+PASSED ffffffde op: or_op
+PASSED 00000014 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2438801 NS).
+top.scoreboard
+FAILED: A: 39  B: fffffff7  op: sub_op result: ffffffbe predicted_result: 42
+PASSED 00000060 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2448781 NS).
+top.scoreboard
+FAILED: A: 67  B: ffffff88  op: sub_op result: ffffff21 predicted_result: df
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2453821 NS).
+top.scoreboard
+FAILED: A: 3b  B: 25  op: sub_op result: ffffffea predicted_result: 16
+PASSED ffffffa7 op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2463841 NS).
+top.scoreboard
+FAILED: A: 36  B: 34  op: sub_op result: fffffffe predicted_result: 2
+PASSED 00000002 op: and_op
+PASSED 00000001 op: and_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2478861 NS).
+top.scoreboard
+FAILED: A: ffffff98  B: 2b  op: sub_op result: 93 predicted_result: ffffff6d
+PASSED 0000000e op: add_op
+xmsim: *E,ERRSEV (./alu_tb.sv,406): (time 2488821 NS).
+top.scoreboard
+FAILED: A: 3f  B: 1a  op: sub_op result: ffffffdb predicted_result: 25
+PASSED 000000b5 op: add_op
+PASSED 0000007d op: add_op
+PASSED ffffffb2 op: add_op
+PASSED ffffffb3 op: or_op
+PASSED 0000007e op: or_op
+Simulation complete via $finish(1) at time 2514930 NS + 0
+./alu_tb.sv:359       $finish;
+xcelium> See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_56e8d10f_2d5c3989.ucm
+  data               :  ./cov_work/scope/test/icc_56e8d10f_2d5c3989.ucd
+TOOL:	xrun	19.09-s003: Exiting on Oct 17, 2020 at 11:24:39 CEST  (total: 00:22:35)

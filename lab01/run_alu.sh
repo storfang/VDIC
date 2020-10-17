@@ -44,8 +44,8 @@ separator=`perl -e "print \"#\" x $cols"`
 #------------------------------------------------------------------------------
 # simulator arguments #<<<
 XRUN_ARGS="\
-  -f dut.f \
-  -f tb.f \
+  -f dut_alu.f \
+  -f tb_alu.f \
   -v93 \
   +nowarnDSEM2009 \
   +nowarnDSEMEL \
