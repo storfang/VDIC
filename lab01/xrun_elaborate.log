@@ -1,4 +1,4 @@
-TOOL:	xrun	19.09-s003: Started on Oct 21, 2020 at 08:43:30 CEST
+TOOL:	xrun	19.09-s003: Started on Oct 22, 2020 at 20:29:58 CEST
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -10,9 +10,7 @@ xrun
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
-	-xmlibdirname INCA_libs_gui
-	+access+r
-	+gui
+	-xmlibdirname INCA_libs
 	+overwrite
 	-nocopyright
 	-coverage all
@@ -30,28 +28,28 @@ xrun
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
 	Generating native compiled code:
-			streams:   7, words:  4287
-			streams:   9, words: 28418
-			streams:   7, words:  3741
-		worklib.top:sv <0x6b9bf3d4>
-			streams:  18, words: 54802
-integer i,j,k,l,j_nxt,l_nxt,g ;
-        |
-xmelab: *W,COVUTA (./alu_tb.sv,36|8): Toggle coverage is not supported for SystemVerilog integer, real, string, dynamic array, sparse memory and reference ports. It is also not supported for VHDL multi-dimensional array and array of record. There may also be other such objects in the design.
+			streams:   7, words:  3972
+			streams:   9, words: 25661
+			streams:   7, words:  3321
+		worklib.top:sv <0x6d978b42>
+			streams:  19, words: 61713
+bit [31:0]    queue_A[$];
+                    |
+xmelab: *W,COVUTA (./alu_tb.sv,32|20): Toggle coverage is not supported for SystemVerilog integer, real, string, dynamic array, sparse memory and reference ports. It is also not supported for VHDL multi-dimensional array and array of record. There may also be other such objects in the design.
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                 5       5
-		Registers:              90      90
+		Registers:              95      95
 		Scalar wires:            8       -
 		Vectored wires:          3       -
-		Always blocks:          15      15
+		Always blocks:          16      16
 		Initial blocks:          3       3
 		Cont. assignments:       0       1
 		Pseudo assignments:      2       2
 		Covergroup Instances:    0       2
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	19.09-s003: Exiting on Oct 21, 2020 at 08:43:31 CEST  (total: 00:00:01)
+TOOL:	xrun	19.09-s003: Exiting on Oct 22, 2020 at 20:29:58 CEST  (total: 00:00:00)

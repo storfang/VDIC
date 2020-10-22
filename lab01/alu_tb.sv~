@@ -29,6 +29,13 @@ module top;
    bit sin;   // serial data input
    bit sout; 
 
+bit [31:0]    queue_A[$];
+bit [31:0]    queue_B[$];
+bit [2:0]    queue_op[$];
+bit [3:0] flag;
+bit [3:0] predicted_flag;
+bit [31:0] predicted_result;
+
 reg [7:0] CTL;
 reg pass, passes;
 reg [67:0] data;
@@ -87,15 +94,15 @@ localparam CRC_ERROR = 8'b10100101,
       }
 
       a_leg: coverpoint A {
-         bins zeros = {'h0000};
-         bins others= {['h01:'hFE]};
-         bins ones  = {'hFFFF};
+         bins zeros = {'h00000000};
+         bins others= {['h00000001:'hFFFFFFFE]};
+         bins ones  = {'hFFFFFFFF};
       }
 
       b_leg: coverpoint B {
-         bins zeros = {'h0000};
-         bins others= {['h01:'hFE]};
-         bins ones  = {'hFFFF};
+         bins zeros = {'h00000000};
+         bins others= {['h00000001:'hFFFFFFFE]};
+         bins ones  = {'hFFFFFFFF};
       }
 
       B_op_00_FF:  cross a_leg, b_leg, all_ops {
@@ -192,9 +199,9 @@ localparam CRC_ERROR = 8'b10100101,
       bit [1:0] zero_ones;
       zero_ones = $random;
       if (zero_ones == 2'b00)
-        return 32'h0000;
+        return 32'h00000000;
       else if (zero_ones == 2'b11)
-        return 32'hFFFF;
+        return 32'hFFFFFFFF;
       else
         return $random;
    endfunction : get_data
@@ -230,32 +237,32 @@ end
 endtask
 */
 
-	task send_byte(input [7:0] essence, input frame_type);
-	begin
-		sin <= 1'b0;
-		@(negedge clk)
-		sin <= frame_type;
-		@(negedge clk)
-		sin = essence[7];
+task send_byte(input [7:0] essence, input frame_type);
+begin
+	sin <= 1'b0;
+	@(negedge clk)
+	sin <= frame_type;
+	@(negedge clk)
+	sin = essence[7];
         @(negedge clk)
-        sin = essence[6];
-        @(negedge clk)
-        sin = essence[5];
-        @(negedge clk)
-        sin = essence[4];
-        @(negedge clk)
-        sin = essence[3];
-        @(negedge clk)
-        sin = essence[2];
-        @(negedge clk)
-        sin = essence[1];
-        @(negedge clk)
+       	sin = essence[6];
+       	@(negedge clk)
+       	sin = essence[5];
+       	@(negedge clk)
+       	sin = essence[4];
+       	@(negedge clk)
+       	sin = essence[3];
+       	@(negedge clk)
+       	sin = essence[2];
+       	@(negedge clk)
+       	sin = essence[1];
+       	@(negedge clk)
         sin = essence[0];
-        @(negedge clk)
-		sin <= 1'b1;
-		@(negedge clk);
+       	@(negedge clk)
+	sin <= 1'b1;
+	@(negedge clk);
 	end
-	endtask
+endtask
 
 task send_calculation_data;
   input [71:0] bytes; //
@@ -323,14 +330,19 @@ end
       @(negedge clk);
       rst_n = 1'b1;
       //start = 1'b0;
-#2000;
+	A=4'hFFFF; B=A; CTL=B; send_calculation_data({CTL,A,B});
+	#2000;
       repeat (1000) begin : tester_main
          @(negedge clk); 
 	//@(negedge done);
 	//done = 1'b0;
          op_set = get_op();
-         A = get_data();
-         B = get_data();
+ 	queue_op.push_front(op_set);
+         A = get_data(); 
+	queue_A.push_front(A);
+         B = get_data(); 
+	queue_B.push_front(B);
+	//queue_1.
         // start = 1'b1;
          case (op_set) // handle the start signal
            no_op: begin : case_no_op
@@ -364,7 +376,7 @@ end
    	      data = {B,A,1'b1,op_set};
    	      CTL[3:0] = nextCRC4_D68(data,4'b0000);
 //$display("values: A: %0h  B: %0h  op: %s CTL: %0h",
-             //     A, B, op_set.name(), CTL);
+  //                A, B, op_set.name(), CTL);
    	      send_calculation_data({CTL,A,B});
 #2000; //compare({out[52:45],out[41:34],out[30:23],out[19:12]},A,B,CTL,pass);
 //$display("result %0h", {out[52:45],out[41:34],out[30:23],out[19:12]});
@@ -411,14 +423,27 @@ end
   end
 endtask
 */
+
+always @(*) begin
+//FLAGS = { Carry, Overflow, Zero, Negative }
+predicted_flag[1] = (predicted_result == 0); //zero_f
+predicted_flag[0] = predicted_result[31]; //negative_f
+predicted_flag[3] = (((op_set == add_op) && ((predicted_result < A) || (predicted_result < B))) || ((op_set == sub_op) && (A < predicted_result))); //carry_f
+predicted_flag[2] = (((op_set == add_op) && !(A[31]^B[31]) && (A[31]^predicted_result[31])) || ((op_set == sub_op) && !(A[31]^predicted_result[31]) && (B[31]^predicted_result[31]))); //overflow_f
+
+end
+
    always @(posedge done) begin : scoreboard
-      int predicted_result;
+    //  int predicted_result; int a1;
       #1;
+	//queue_op.pop_back(op_set);
+ queue_A.pop_back(); 
+//queue_B.pop_back(B);
       case (op_set)
-        add_op: begin predicted_result = A + B; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; end
-        and_op: begin predicted_result = A & B; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; end
-        or_op: begin predicted_result = A | B; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; end
-        sub_op: begin predicted_result = B - A; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; end
+        add_op: begin predicted_result = A + B; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; flag = out[7:4]; end
+        and_op: begin predicted_result = A & B; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; flag = out[7:4]; end
+        or_op: begin predicted_result = A | B; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; flag = out[7:4]; end
+        sub_op: begin predicted_result = B - A; result = {out[52:45],out[41:34],out[30:23],out[19:12]}; flag = out[7:4]; end
 	data_error: begin predicted_result = DATA_ERROR; result = out[52:45]; end
 	crc_error: begin predicted_result = CRC_ERROR; result = out[52:45]; end
 	op_error: begin predicted_result = OP_ERROR; result = out[52:45]; end
@@ -427,7 +452,7 @@ endtask
 	//result = {out[52:45],out[41:34],out[30:23],out[19:12]};
 	//else result = out[52:45];
       if ((op_set != no_op))
-        if (predicted_result == result)
+        if ((predicted_result == result)&&(predicted_flag == flag))
 $display("PASSED %h op: %s", result, op_set.name());
           
 	else $error ("FAILED: A: %0h  B: %0h  op: %s result: %0h predicted_result: %0h",
