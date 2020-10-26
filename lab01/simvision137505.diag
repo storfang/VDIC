@@ -1,0 +1,88 @@
+*** Message Type: info ***
+When: Mon Oct 26 18:22:15 CET 2020
+SimVision started.
+Version: TOOL:  simvision       19.09-s003
+User: moleszkowicz
+Host: localhost
+Platform: Linux/x86_64/2.6.32-754.33.1.el6.x86_64
+Started: Mon Oct 26 18:22:15 CET 2020
+Command: /cad/XCELIUM1909/tools.lnx86/simvision/bin/simvision.exe -connect dc:localhost:35805 -nocopyright
+Work Directory: /home/student/moleszkowicz/VDIC/lab01
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:22:15 CET 2020
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:22:17 CET 2020
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:22:19 CET 2020
+Connect to Simulator
+      Design: worklib.top:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim   19.09-s003
+        User: moleszkowicz
+        Host: localhost
+Time Started: Mon Oct 26 18:22:14 CET 2020
+  Process ID: 137496
+   Directory: /home/student/moleszkowicz/VDIC/lab01
+     Command: xrun -f dut_alu.f -f tb_alu.f -v93 +nowarnDSEM2009 +nowarnDSEMEL +nowarnCGDEFN -xmlibdirname INCA_libs_gui +access+r +gui +overwrite -nocopyright -coverage all -covoverwrite -covfile xrun_covfile.txt -covtest lab01 -l xrun_gui.log
+
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:22:19 CET 2020
+Create utility window: "Properties"
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:22:33 CET 2020
+Create waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:25:01 CET 2020
+Exit XM-Sim: user
+      Design: worklib.top:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim   19.09-s003
+        User: moleszkowicz
+        Host: localhost
+Time Started: Mon Oct 26 18:22:14 CET 2020
+  Process ID: 137496
+   Directory: /home/student/moleszkowicz/VDIC/lab01
+     Command: xrun -f dut_alu.f -f tb_alu.f -v93 +nowarnDSEM2009 +nowarnDSEMEL +nowarnCGDEFN -xmlibdirname INCA_libs_gui +access+r +gui +overwrite -nocopyright -coverage all -covoverwrite -covfile xrun_covfile.txt -covtest lab01 -l xrun_gui.log
+
+ 
+*** Message Type: error ***
+When: Mon Oct 26 18:25:01 CET 2020
+XM-Sim Crashed:
+      Design: worklib.top:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:     xmsim   19.09-s003
+        User: moleszkowicz
+        Host: localhost
+Time Started: Mon Oct 26 18:22:14 CET 2020
+  Process ID: 137496
+   Directory: /home/student/moleszkowicz/VDIC/lab01
+     Command: xrun -f dut_alu.f -f tb_alu.f -v93 +nowarnDSEM2009 +nowarnDSEMEL +nowarnCGDEFN -xmlibdirname INCA_libs_gui +access+r +gui +overwrite -nocopyright -coverage all -covoverwrite -covfile xrun_covfile.txt -covtest lab01 -l xrun_gui.log
+      Design: worklib.top:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:      xmsim   19.09-s003
+        User: moleszkowicz
+        Host: localhost
+Time Started: Mon Oct 26 18:22:14 CET 2020
+  Process ID: 137496
+   Directory: /home/student/moleszkowicz/VDIC/lab01
+     Command: xrun -f dut_alu.f -f tb_alu.f -v93 +nowarnDSEM2009 +nowarnDSEMEL +nowarnCGDEFN -xmlibdirname INCA_libs_gui +access+r +gui +overwrite -nocopyright -coverage all -covoverwrite -covfile xrun_covfile.txt -covtest lab01 -l xrun_gui.log
+
+Outstanding STRAP Requests:
+        strap::report enable out
+ 
+*** Message Type: info ***
+When: Mon Oct 26 18:25:04 CET 2020
+SimVision Exit.
+ 
