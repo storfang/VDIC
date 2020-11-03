@@ -1,2 +1,0 @@
-[1012/171212.734:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Mateusz\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\8bdb2485-c990-4f55-a8c1-405d8c715382: System nie mo¿e odnaleŸæ okreœlonej œcie¿ki. (0x3)
-[1012/171212.735:ERROR:directory_reader_win.cc(43)] FindFirstFile: System nie mo¿e odnaleŸæ okreœlonej œcie¿ki. (0x3)
