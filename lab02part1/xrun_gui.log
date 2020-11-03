@@ -1,0 +1,1596 @@
+TOOL:	xrun	19.09-s003: Started on Nov 02, 2020 at 20:00:40 CET
+xrun
+	-f dut_alu.f
+		mtm_Alu.vp
+	-f tb_alu.f
+		alu_pkg.sv
+		alu_bfm.sv
+		tester_alu.sv
+		coverage_alu.sv
+		scoreboard_alu.sv
+		top_alu.sv
+	-v93
+	+nowarnDSEM2009
+	+nowarnDSEMEL
+	+nowarnCGDEFN
+	-xmlibdirname INCA_libs_gui
+	+access+r
+	+gui
+	+overwrite
+	-nocopyright
+	-coverage all
+	-covoverwrite
+	-covfile xrun_covfile.txt
+	-covtest lab01
+	-l xrun_gui.log
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /cad/XCELIUM1909/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm top.bfm.A top.bfm.B top.bfm.CTL top.bfm.clk top.bfm.done top.bfm.g top.bfm.i top.bfm.j top.bfm.j_nxt top.bfm.k top.bfm.l top.bfm.l_nxt top.bfm.op top.bfm.op_set top.bfm.out top.bfm.out_nxt top.bfm.q1 top.bfm.result top.bfm.rst_n top.bfm.sin top.bfm.sout
+Created probe 1
+xcelium> reset
+xmsim: *W,C58RST: Reset command executed. Coverage is enabled for the subsequent simulation run.  The coverage test name needs to be changed to prevent data overwrite, and any coverage control commands previously used must be reissued.
+Loaded snapshot worklib.top:sv
+xcelium> run
+PASSED 8484d608 op: add_op
+PASSED 4e315e9c op: sub_op
+PASSED 27a02a4f op: sub_op
+PASSED f2fff7e5 op: or_op
+PASSED e7fedfcf op: or_op
+PASSED 0608480c op: and_op
+PASSED c03b2281 op: sub_op
+PASSED 88808811 op: and_op
+PASSED 00000000 op: sub_op
+PASSED 106f3421 op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 63751 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 20c4b341  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 614109c2 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 73871 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 85d79a0b  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 83991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: aaa4b15  B: 6c9c4bd9  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 89051 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 94111 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 99171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 665fffcc op: or_op
+PASSED 3feddb7f op: or_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: sub_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 134591 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ce2ff29c  B: 937dbc26  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED ffdbeeff op: or_op
+PASSED 2231ff44 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 164951 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 6e5daddc  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 170011 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e1f102c3  B: 2779e94e  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 175071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 5b6fb9b6  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: or_op
+PASSED 00000093 op: op_error
+PASSED ae97235d op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 195311 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: a3071a46  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 200371 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: da6ebab4  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 80452000 op: and_op
+PASSED 149e0729 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 215551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 9eb7c63d  B: b855c470  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 225671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1b876137  B: 603921c0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 230731 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 3e99837d  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 235791 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ed8d80db  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 240851 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: fd28e4fa  B: b940917  op: crc_error result: 93 predicted_result: a5
+PASSED baf79e75 op: or_op
+PASSED e2e574c5 op: or_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 261091 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d44b80a8  B: d0ca8ca1  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 266151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: cfd6c09f  B: 155a1d2a  op: crc_error result: 93 predicted_result: a5
+PASSED c7f6fd90 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 276271 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 281331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 5d059dba  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 291451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: f92794f2  B: dece5ebd  op: crc_error result: 93 predicted_result: a5
+PASSED 54a879a9 op: add_op
+PASSED ffffffff op: or_op
+PASSED dfe8f7bf op: or_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 316751 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 25b75f4b  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 321811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 6b3050d  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 81360402 op: and_op
+PASSED adac225b op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 336991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED d00304a0 op: and_op
+PASSED ffffffff op: or_op
+PASSED 8f8c6e1f op: or_op
+PASSED 0a221014 op: and_op
+PASSED ffffffff op: or_op
+PASSED 6c3eddd9 op: sub_op
+PASSED a4da564a op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 382531 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 41a10583  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 387591 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: b455f268  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 392651 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: and_op
+PASSED 00000000 op: and_op
+PASSED 21d62243 op: add_op
+PASSED c3360485 op: add_op
+PASSED 3d38847a op: sub_op
+PASSED 9de17c3b op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 428071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ae78585c  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 438191 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 86dcf00d  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED ce0b959c op: sub_op
+PASSED 2d41685a op: sub_op
+PASSED c63a928c op: add_op
+PASSED 80ea6700 op: add_op
+PASSED 80810001 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 478671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: a48f7c49  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000001 op: sub_op
+PASSED 635085c7 op: sub_op
+PASSED 00000000 op: and_op
+PASSED 00000000 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 24d2bf49 op: sub_op
+PASSED 00000000 op: or_op
+PASSED 00000093 op: op_error
+PASSED bdd9567b op: sub_op
+PASSED e97f96d2 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 544451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 549511 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 554571 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 8653620c  B: 62fd49c5  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 559631 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: b4f9a469  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 564691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ec3758d8  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 574811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 584931 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 45e28b8b  B: 6d808bdb  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: and_op
+PASSED 5441a9a8 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 600111 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: cab47c95  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 605171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 9420ea28  op: crc_error result: 93 predicted_result: a5
+PASSED f0eeaee0 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 615291 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 6a9fb9d5  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 069b800d op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 625411 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1e664d3c  B: 77ebb1ef  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 319de862 op: add_op
+PASSED 5f5133be op: sub_op
+PASSED 00000093 op: op_error
+PASSED 91c2b824 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 676011 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 681071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 5ca26fb9  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED affcff5f op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 696251 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000001 op: sub_op
+PASSED a620904c op: and_op
+PASSED 00000000 op: and_op
+PASSED a1daae44 op: sub_op
+PASSED 00000000 op: and_op
+PASSED 511533a3 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 731671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 736731 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 23400b46  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED fc79f6f8 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 751911 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 55861fab  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED ba0cdc75 op: sub_op
+PASSED 52b533a5 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 772151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED cd1d509a op: add_op
+PASSED 4111d182 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 787331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 61dafdc3  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000000 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 196a0331 op: add_op
+PASSED d57fecaa op: or_op
+PASSED 44640788 op: and_op
+PASSED ffffffff op: add_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000000 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 858171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1b920537  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 863231 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 9f7a0e3e  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 09164d12 op: add_op
+PASSED 790008f2 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED fffffffe op: add_op
+PASSED f0ea70e1 op: add_op
+PASSED 1b20e937 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 903711 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 6e6d23dc op: and_op
+PASSED 00000000 op: and_op
+PASSED 00000093 op: op_error
+PASSED ffffffff op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 929011 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: b8760270  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 0edddf1d op: or_op
+PASSED 00000000 op: and_op
+PASSED ffffffff op: and_op
+PASSED 00000000 op: sub_op
+PASSED 00000000 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED ffffffff op: add_op
+PASSED 72828de6 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 979611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 989731 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: and_op
+PASSED 28d6a951 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED fa0f63f4 op: sub_op
+PASSED e9d22cd4 op: sub_op
+PASSED 20536140 op: and_op
+PASSED 6b299dd6 op: add_op
+PASSED ffffffff op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1040331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: bbbc3e77  op: data_error result: 93 predicted_result: c9
+PASSED 399a4e74 op: sub_op
+PASSED 00000000 op: and_op
+PASSED a4200648 op: and_op
+PASSED 39181872 op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1070691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 4f49019e  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED bf53b47e op: or_op
+PASSED a4de2848 op: add_op
+PASSED fffffffe op: add_op
+PASSED fbbf5ff7 op: or_op
+PASSED 7e29b3fc op: or_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1111171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: d066e4a0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1116231 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1121291 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: eff34cdf  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1126351 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 5ee97bbd  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED ffffffff op: or_op
+PASSED 17a98d30 op: sub_op
+PASSED b2713963 op: add_op
+PASSED b4c16c69 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1156711 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 7fcff3ff  B: f42082e8  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1171891 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: f1e511e  B: f5a4f2eb  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 1bf8bd38 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: sub_op
+PASSED f1a32ee3 op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1222491 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 35557b6a  B: 8c06d218  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1227551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1725712e  B: 33638966  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1232611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: c7b43a8f  B: 3da8cd7b  op: crc_error result: 93 predicted_result: a5
+PASSED e4d820c8 op: add_op
+PASSED d6aea8ac op: add_op
+PASSED ffffffff op: sub_op
+PASSED 00000000 op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000000 op: or_op
+PASSED d659d0ac op: or_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1283211 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 2ed66b5d  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: add_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1298391 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d01df0a0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 26c7134c op: add_op
+PASSED 00000093 op: op_error
+PASSED 40eb4f81 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1333811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 878a880f  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED cd57529a op: or_op
+PASSED ffffffff op: or_op
+PASSED 82102004 op: and_op
+PASSED 005d50ff op: add_op
+PASSED 00000000 op: add_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1369231 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 4b5fca96 op: add_op
+PASSED 00000093 op: op_error
+PASSED 98b4dc31 op: and_op
+PASSED 00000093 op: op_error
+PASSED c7ab2d8f op: add_op
+PASSED 8569fa0a op: and_op
+PASSED 92fd2825 op: or_op
+PASSED 97dde22f op: and_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1419831 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: b7b82a6f  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1429951 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: e5ceb0cb  op: data_error result: 93 predicted_result: c9
+PASSED 20800141 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1440071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: daf356b5  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1445131 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED deb5ddbd op: add_op
+PASSED 324c4e64 op: sub_op
+PASSED 1a133933 op: add_op
+PASSED d0c93aa2 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1470431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 05f8820b op: and_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1485611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 82b78606 op: sub_op
+PASSED ffffffff op: or_op
+PASSED abe8c057 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1505851 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 336d9367 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1515971 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 286f1350 op: add_op
+PASSED ca9b7c96 op: sub_op
+PASSED ffffffff op: sub_op
+PASSED 8f49661e op: or_op
+PASSED c0400280 op: and_op
+PASSED 20408440 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1551391 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 12ce1125  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED cfb89e9f op: add_op
+PASSED ffffffff op: or_op
+PASSED 08104010 op: and_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1576691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: f670fcec  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1581751 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e02148c0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 4277d783 op: add_op
+PASSED ffffffff op: or_op
+PASSED 2e97795d op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1601991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 2a04b554 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1622231 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d4ea6aa9  B: 6ec2cbdd  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: and_op
+PASSED ffffffff op: or_op
+PASSED 7e72c5fc op: and_op
+PASSED 02820605 op: and_op
+PASSED 00000000 op: and_op
+PASSED b428aa68 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1657651 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: d33554a6  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 7b24bdf6 op: add_op
+PASSED 1f77b73d op: add_op
+PASSED 9e9dca3d op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1682951 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000000 op: and_op
+PASSED ffffffff op: sub_op
+PASSED 00000000 op: and_op
+PASSED 615841c2 op: and_op
+PASSED 00000000 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1743671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: e5a2b2cb  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1748731 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 10c2c521 op: or_op
+PASSED 00000000 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1763911 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 90138420  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1768971 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 96ec2a2d  B: 83a5a007  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED ffffffff op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1784151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 38bd8d71  op: data_error result: 93 predicted_result: c9
+PASSED f92c9af2 op: add_op
+PASSED 00000000 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1799331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1804391 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: c0d54c81  B: 65e2ffcb  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1809451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: faf442f5  B: 23661746  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 93dd5927 op: add_op
+PASSED 00000093 op: op_error
+PASSED fbbfaff7 op: or_op
+PASSED 393d9b72 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1839811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 66c259cd  B: 6b834dd7  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 11357d22 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1865111 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 4eee339d  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1870171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 8658500c  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED a79ca84f op: add_op
+PASSED 00000093 op: op_error
+PASSED ffffffff op: and_op
+PASSED 42738284 op: sub_op
+PASSED 2566444a op: sub_op
+PASSED 1ad81935 op: sub_op
+PASSED f29ae4e5 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1910651 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 9b4a313  B: 8ed88a1d  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1915711 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: c762268e  B: fbced2f7  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1920771 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 7f4ce1fe  B: d39764a7  op: crc_error result: 93 predicted_result: a5
+PASSED 735ce0e6 op: add_op
+PASSED 00000000 op: sub_op
+PASSED fffffffe op: add_op
+PASSED 00000000 op: and_op
+PASSED 00000000 op: and_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1956191 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 395f1772  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: add_op
+PASSED 00000093 op: op_error
+PASSED c9ab9192 op: add_op
+PASSED 8684180d op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 1981491 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED 2ffd675f op: or_op
+PASSED d25cb0a5 op: sub_op
+PASSED 38762a70 op: and_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2011851 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2021971 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: b3ff6c67  B: ec1446d8  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2027031 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d5bc72ab  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2032091 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: d897f4b1  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2037151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2042211 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1d9a7b3b  B: b14c4a62  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: add_op
+PASSED eb9b7fd7 op: add_op
+PASSED efcddcdf op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2062451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2072571 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: c6adf48d  op: crc_error result: 93 predicted_result: a5
+PASSED a5cad44b op: add_op
+PASSED a67f2a4b op: add_op
+PASSED 31d13463 op: add_op
+PASSED e9c860d3 op: or_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2102931 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED f9a6aef4 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2113051 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2118111 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 405d5f80  B: 75f5b9eb  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2123171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: sub_op
+PASSED 00000000 op: and_op
+PASSED 00005000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2143411 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2148471 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 4b400196  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: or_op
+PASSED d1ed7ea3 op: or_op
+PASSED 22449244 op: and_op
+PASSED 6e56b7dc op: add_op
+PASSED 3006935f op: add_op
+PASSED fd6505fa op: add_op
+PASSED 3b09ce75 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2188951 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 4958b09  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2199071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 8578020a  B: 712a9be2  op: crc_error result: 93 predicted_result: a5
+PASSED 16acd72d op: sub_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: add_op
+PASSED fffffffe op: add_op
+PASSED ffffffff op: add_op
+PASSED aaeffe55 op: or_op
+PASSED f9f646f3 op: add_op
+PASSED ffffffff op: add_op
+PASSED 00000093 op: op_error
+PASSED 83e80e08 op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2259791 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 47a9a38f  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2264851 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED e5bbffcb op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2274971 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: c791be8f  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 64d081ca op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2285091 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 639a3fc7  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2295211 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d22472a4  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2305331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 47e50f8f  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED 42ce8785 op: and_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2325571 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 44ae6589 op: or_op
+PASSED 93e51927 op: add_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2350871 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 767c07ec  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2355931 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED 00000000 op: or_op
+PASSED 00000000 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2376171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: d9d2fcb3  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 69fcb5d4 op: sub_op
+PASSED 00000000 op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2401471 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2406531 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 1a0ec733 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2421711 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED ffffffff op: add_op
+PASSED f5a170ea op: add_op
+PASSED 00000000 op: and_op
+PASSED 00000000 op: and_op
+PASSED 00000093 op: op_error
+PASSED b2cf5665 op: or_op
+PASSED d9276eb2 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2467251 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: a767de4e  op: crc_error result: 93 predicted_result: a5
+PASSED eb7fe3d6 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2477371 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 105e5d20  op: data_error result: 93 predicted_result: c9
+PASSED c738fe8e op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2487491 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2492551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2502671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 3dc5677b  B: 3eee637d  op: data_error result: 93 predicted_result: c9
+PASSED 80100000 op: and_op
+PASSED 6d39fdd9 op: add_op
+PASSED ffffffff op: or_op
+PASSED 25c5644a op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2527971 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 907b8220  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 4010a180 op: and_op
+PASSED 1540062a op: and_op
+PASSED 76e9dfed op: and_op
+PASSED e46d77c9 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2558331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 2380c747  B: 59f339b3  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2563391 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2568451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 982eb030  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2583631 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 5553b1aa  op: crc_error result: 93 predicted_result: a5
+PASSED b0650e60 op: sub_op
+PASSED a0604c40 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2598811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d21642a4  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED d0b98ea1 op: and_op
+PASSED ffffffff op: or_op
+PASSED 7eefdffd op: or_op
+PASSED 00000000 op: and_op
+PASSED ffffffff op: or_op
+PASSED d7ffdcaf op: or_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2639291 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 85d78e0b  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 22cf7145 op: sub_op
+PASSED c4437e88 op: or_op
+PASSED a0084040 op: and_op
+PASSED 31481662 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2664591 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 5232aba4  B: a8575c50  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2684831 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e91b72d2  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 9669b82c op: add_op
+PASSED 00000000 op: sub_op
+PASSED ffffffff op: sub_op
+PASSED 92220024 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2710131 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 5786efaf  B: e9f8b6d3  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2715191 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 9ca60639  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2720251 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: f8f0b2f1  B: fc48f2f8  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2725311 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 6aa1dfd5  B: cb42ae96  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED cfa26a9e op: add_op
+PASSED fffffffe op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2750611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e77af1c  B: 560e15ac  op: data_error result: 93 predicted_result: c9
+PASSED b7822c70 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2760731 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ca52fa94  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 995f4632 op: add_op
+PASSED 85d7840b op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2796151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 20ec8141  B: 9e0d8e3c  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2811331 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 5a9e31b5  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 543c3fa8 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2826511 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: e994fed3  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: add_op
+PASSED bcbb1c79 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2841691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ead458d5  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2851811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 3f83307  op: data_error result: 93 predicted_result: c9
+PASSED 601423c0 op: and_op
+PASSED ffffffff op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2866991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 3600a36c  op: crc_error result: 93 predicted_result: a5
+PASSED 9f44523f op: sub_op
+PASSED c3262986 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED e20343c4 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2897351 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2902411 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e3642ac6  B: 52ad53a5  op: crc_error result: 93 predicted_result: a5
+PASSED eb5d8cd6 op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2927711 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED fffffffe op: add_op
+PASSED 00000000 op: add_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 2947951 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 29a75553  op: data_error result: 93 predicted_result: c9
+PASSED a5609049 op: add_op
+PASSED f6b8daed op: or_op
+PASSED cdf76a9c op: sub_op
+PASSED aecb7f5d op: or_op
+PASSED 78a202f0 op: add_op
+PASSED a818ac50 op: and_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 8812fd0f op: add_op
+PASSED 705a95e1 op: sub_op
+PASSED 79907bf3 op: and_op
+PASSED 00000000 op: and_op
+PASSED 2a436253 op: add_op
+PASSED 00000000 op: sub_op
+PASSED f074e8e0 op: or_op
+PASSED 7ffecfff op: or_op
+PASSED ff7efbfe op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3039031 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: f6d79aed  B: 980ff230  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED de5e4ebd op: sub_op
+PASSED ffffffff op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3059271 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e0baa8c1  B: 941eba28  op: crc_error result: 93 predicted_result: a5
+PASSED 9c086a38 op: or_op
+PASSED 00000093 op: op_error
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3079511 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 5dd03dbb  op: crc_error result: 93 predicted_result: a5
+PASSED 13b66b27 op: add_op
+PASSED 197ad632 op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3109871 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 2d86a35b  B: b6df286d  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED 24285d49 op: sub_op
+PASSED a0767f41 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3135171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: cf57319  B: c83f6490  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3140231 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3145291 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 5f96f5bf  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED f8abf8f1 op: and_op
+PASSED 112c4322 op: and_op
+PASSED ffffffff op: or_op
+PASSED ee4fa5dc op: sub_op
+PASSED dc302eb8 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3175651 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 23a36547  op: data_error result: 93 predicted_result: c9
+PASSED b05c8660 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3185771 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 21af0d43  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3190831 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 31492362  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3195891 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: c11aba82  B: c941319  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3211071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: eb9c04d7  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: add_op
+PASSED ffffffff op: or_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3231311 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: d40140a8  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3236371 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: c9c6c493  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3241431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: c3b63487  op: crc_error result: 93 predicted_result: a5
+PASSED 5a87adb5 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3251551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 73cf13e7  B: 856aa00a  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3256611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3261671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 61dfedc3 op: or_op
+PASSED 00000000 op: add_op
+PASSED 35662d6a op: add_op
+PASSED ffffffff op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3297091 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3302151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 10a75521  B: 5e5f90b  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: add_op
+PASSED 1db9113b op: sub_op
+PASSED 6144c2c2 op: sub_op
+PASSED a0002040 op: and_op
+PASSED ffffffff op: or_op
+PASSED 0611110b op: add_op
+PASSED 7417c5e8 op: and_op
+PASSED 00000000 op: and_op
+PASSED 21642042 op: and_op
+PASSED 6d8043db op: or_op
+PASSED 91379322 op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED a13d5d42 op: add_op
+PASSED a7a0364f op: add_op
+PASSED f544d4ea op: sub_op
+PASSED 690b5bd3 op: sub_op
+PASSED 5b52ffb6 op: add_op
+PASSED 00000093 op: op_error
+PASSED ffffffff op: and_op
+PASSED 1ce15b39 op: add_op
+PASSED b520b86a op: add_op
+PASSED cc834a99 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3423591 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 7db63bfb  op: data_error result: 93 predicted_result: c9
+PASSED 44244388 op: and_op
+PASSED ffffffff op: or_op
+PASSED 3b6f3b76 op: or_op
+PASSED 32a00366 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3448891 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: sub_op
+PASSED 00000093 op: op_error
+PASSED 3443f567 op: add_op
+PASSED 61157fc2 op: add_op
+PASSED 00000000 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3479251 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 82ddc605  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3484311 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3489371 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 8166f402  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3494431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 7dc681fb  B: d12fb4a2  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 24c7154a op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3514671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 410fc782  B: c47dc288  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3519731 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 25fd4b4b  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3534911 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 6b696bd6  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED eee9d8dd op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3545031 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: c4c30a89  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3550091 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED fb7ebef6 op: or_op
+PASSED 00000093 op: op_error
+PASSED 9de0e43c op: sub_op
+PASSED 00000001 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3575391 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3580451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: a5ca6a4b  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3585511 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: f04ba2e0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3590571 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 8cccce19  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3595631 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 4b00eb96 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3605751 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: fb6014f6  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3610811 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 388c5f71  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3625991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3636111 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 3706d06d op: add_op
+PASSED 00000000 op: and_op
+PASSED 13918826 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3656351 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: f39f5ee7  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3661411 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: b7e0cc6f  B: 85e0910  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3666471 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 1e81803d op: and_op
+PASSED 064aed0b op: add_op
+PASSED e9f134d3 op: add_op
+PASSED 1659102c op: and_op
+PASSED e38606c7 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3701891 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: bf6eea7e  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 8f2da41e op: and_op
+PASSED c4090288 op: and_op
+PASSED ffffffff op: or_op
+PASSED 76aaffed op: or_op
+PASSED 5050e5a0 op: sub_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3747431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3752491 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1e282b3c  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED d27de6a4 op: add_op
+PASSED 11c32923 op: and_op
+PASSED 00000093 op: op_error
+PASSED 86e7ce0e op: sub_op
+PASSED 00000093 op: op_error
+PASSED 82e1ae05 op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED ffffffff op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3808151 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 3b994b77  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3813211 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 1a61fb34  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3818271 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 4889f391  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3828391 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 208d6d41  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 000d5300 op: add_op
+PASSED 00000000 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3843571 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 169bd92d  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 692cf8d2 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3853691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ed658ada  B: d284c4a5  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED d9bebcb3 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3868871 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 538cdba7  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 4912fb92 op: and_op
+PASSED f7f7f7ef op: or_op
+PASSED a5cd724b op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3894171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 4e5a1f9c  B: 9714c82e  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED d6bc7aad op: or_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3929591 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 258d874b  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 93120c26 op: sub_op
+PASSED fffffffe op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3954891 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 67f3c1cf  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3965011 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED eb7a85d6 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3975131 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 73ca69e7  B: bbd96677  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 3980191 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 4ca2c699 op: sub_op
+PASSED 00000000 op: and_op
+PASSED dfff77bf op: or_op
+PASSED 930eb226 op: and_op
+PASSED 00000001 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4010551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 9525da2a  op: crc_error result: 93 predicted_result: a5
+PASSED 80a03001 op: and_op
+PASSED 00000001 op: sub_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4030791 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: e594a8cb  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4035851 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4040911 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED f78476f0 op: sub_op
+PASSED 00000000 op: and_op
+PASSED bd23217a op: add_op
+PASSED 9cb9b639 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4066211 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED fb505ef6 op: and_op
+PASSED bf76227e op: and_op
+PASSED ffffffff op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4086451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 47bd9b8f  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4101631 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 13bfd527  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4106691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 9677b82c  B: 0  op: data_error result: 93 predicted_result: c9
+PASSED 086e8011 op: sub_op
+PASSED fcecacfa op: sub_op
+PASSED 16f1a92d op: or_op
+PASSED 00000000 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4131991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 18661a30 op: and_op
+PASSED b0358861 op: sub_op
+PASSED 90287420 op: add_op
+PASSED 00000093 op: op_error
+PASSED e897ded1 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4162351 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ef184ade  B: ad53d45a  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: sub_op
+PASSED ea9474d5 op: sub_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4197771 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 90188820  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED db22f5b6 op: sub_op
+PASSED 00000000 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4223071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 288b8551  B: 88758210  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED bfcbff7f op: or_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+PASSED 66d297cc op: add_op
+PASSED e4fbdec9 op: sub_op
+PASSED e5e672cb op: or_op
+PASSED a01c2b3f op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4268611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 7d2b43fa  B: ae44ee5c  op: data_error result: 93 predicted_result: c9
+PASSED 00000093 op: op_error
+PASSED 00000000 op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000000 op: sub_op
+PASSED d7b130af op: and_op
+PASSED 00000000 op: and_op
+PASSED 00000093 op: op_error
+PASSED ee37fedb op: add_op
+PASSED 00000093 op: op_error
+PASSED 9599982a op: add_op
+PASSED 00000093 op: op_error
+PASSED ffffffff op: add_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4339451 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 357cd96a  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED f6b62aed op: and_op
+PASSED 00000093 op: op_error
+PASSED 4167f782 op: add_op
+PASSED ffffffff op: or_op
+PASSED ffffffff op: or_op
+PASSED af10ec5e op: sub_op
+PASSED ca4bc494 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4379931 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 611e71c2  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED cf41569e op: or_op
+PASSED 2d7e075b op: sub_op
+PASSED 500485a0 op: and_op
+PASSED ae93ae5d op: sub_op
+PASSED 2f65b95e op: and_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4420411 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 268df94d  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4430531 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 44dcb989  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: and_op
+PASSED ffffffff op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4445711 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 4b755d96  B: 8ce2a019  op: crc_error result: 93 predicted_result: a5
+PASSED 09042d13 op: sub_op
+PASSED 2a6ed555 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4460891 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 8623960c  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 009a8900 op: add_op
+PASSED f1da71e3 op: add_op
+PASSED 3847756f op: add_op
+PASSED 00000000 op: and_op
+PASSED ffffffff op: or_op
+PASSED ca1c6e93 op: add_op
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4506431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 84913e09  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 2cb2cb5a op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4516551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4526671 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4541851 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 34416168  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4546911 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e13084c2  B: 4d60319a  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4551971 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: de3630bc  B: 139ce527  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4557031 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED ff5f14fe op: or_op
+PASSED 4ff8499f op: and_op
+PASSED ffffffff op: and_op
+PASSED ebf5c8d7 op: add_op
+PASSED 00000093 op: op_error
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4602571 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: or_op
+PASSED 12c5b825 op: sub_op
+PASSED 08240c10 op: and_op
+PASSED 00000001 op: sub_op
+PASSED ffffffff op: sub_op
+PASSED 936c6727 op: sub_op
+PASSED 601094c0 op: and_op
+PASSED 2c28fd58 op: add_op
+PASSED 00000000 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4653171 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4658231 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 2a46ab54  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4663291 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 3691316d  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED e58140cb op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4673411 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: f38f58e7  op: crc_error result: 93 predicted_result: a5
+PASSED 606408c0 op: and_op
+PASSED 02012504 op: and_op
+PASSED ffffffff op: and_op
+PASSED ffffffff op: add_op
+PASSED 1cdf9f39 op: and_op
+PASSED 24150548 op: and_op
+PASSED 00000000 op: and_op
+PASSED 00d40601 op: and_op
+PASSED f10995e2 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4724011 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 2666114c  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 41004882 op: sub_op
+PASSED 20174140 op: and_op
+PASSED 8abf6c15 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4744251 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4749311 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: e43584c8  op: crc_error result: 93 predicted_result: a5
+PASSED 00000000 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4759431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 1690df2d  B: d7e3b0af  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 720e12e3 op: add_op
+PASSED 00046a00 op: and_op
+PASSED 00000093 op: op_error
+PASSED 5d3befba op: sub_op
+PASSED d4c73daa op: sub_op
+PASSED 00000093 op: op_error
+PASSED 49502593 op: sub_op
+PASSED 68b05ed1 op: sub_op
+PASSED 00000093 op: op_error
+PASSED 23022946 op: and_op
+PASSED f364ffe6 op: add_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4825211 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 54d8a5a9  B: 97f5522f  op: data_error result: 93 predicted_result: c9
+PASSED a229ce44 op: or_op
+PASSED d6aaecad op: or_op
+PASSED cd5e069a op: or_op
+PASSED 30a43761 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4850511 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED b2deb165 op: add_op
+PASSED f1ffb1e3 op: or_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4865691 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 1fd0493f  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4870751 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED 00000000 op: and_op
+PASSED 39ab5f73 op: add_op
+PASSED d816c2b1 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4890991 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: f63a7cec  B: d84bd6b0  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4896051 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 2649894c  B: e65fb0cc  op: data_error result: 93 predicted_result: c9
+PASSED 67b2dfcf op: or_op
+PASSED 00236200 op: and_op
+PASSED ffffffff op: or_op
+PASSED da9b0bb5 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4921351 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: d81c22b0  B: 63551dc6  op: data_error result: 93 predicted_result: c9
+PASSED ffffffff op: or_op
+PASSED 00000093 op: op_error
+PASSED cb142c96 op: and_op
+PASSED f0a700e1 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4946651 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 7ff425ff  B: 4a7cf994  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+PASSED a7de7f4f op: or_op
+PASSED 00000093 op: op_error
+PASSED f4f76de9 op: or_op
+PASSED 00000000 op: add_op
+PASSED cc3b7298 op: sub_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4982071 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: e074a4c0  B: d22702a4  op: crc_error result: 93 predicted_result: a5
+PASSED 91783221 op: add_op
+PASSED 00000000 op: and_op
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 4997251 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 0  B: 0  op: crc_error result: 93 predicted_result: a5
+PASSED 00000093 op: op_error
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 5007371 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 5012431 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: 2dfc975b  B: 0  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 5017491 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: 21948b43  op: data_error result: 93 predicted_result: c9
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 5022551 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: crc_error result: 93 predicted_result: a5
+xmsim: *E,ERRSEV (./scoreboard_alu.sv,33): (time 5027611 NS).
+top.scoreboard_i.scoreboard
+FAILED: A: ffffffff  B: ffffffff  op: data_error result: 93 predicted_result: c9
+PASSED a6f6354e op: sub_op
+PASSED c9570492 op: sub_op
+PASSED 00000093 op: op_error
+PASSED ffffffff op: or_op
+PASSED 00000000 op: and_op
+PASSED a27f2244 op: add_op
+PASSED 68ff16d1 op: add_op
+Simulation complete via $finish(1) at time 5065030 NS + 0
+./tester_alu.sv:79       $finish;
+xcelium> ^C
+xcelium> exit
+...Regained control from SimVision
+-------------------------------------
+See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_5bc9719a_5ab0b69e.ucm
+  data               :  ./cov_work/scope/test/icc_5bc9719a_5ab0b69e.ucd
+TOOL:	xrun	19.09-s003: Exiting on Nov 02, 2020 at 20:03:41 CET  (total: 00:03:01)
