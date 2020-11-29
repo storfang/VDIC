@@ -13,15 +13,15 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class coverage extends uvm_component;
+class coverage extends uvm_subscriber #(command_s);
 
     `uvm_component_utils(coverage)
 
-    virtual alu_bfm bfm;
+  //  virtual alu_bfm bfm;
 
-bit                  [31:0] A;
-bit                  [31:0] B;
-operation_t                op_set;
+protected bit                  [31:0] A;
+protected bit                  [31:0] B;
+protected operation_t                op_set;
 
    covergroup op_cov;
 
@@ -119,22 +119,14 @@ operation_t                op_set;
     endfunction : new
 
 
-    function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1,"Failed to get BFM");
-    endfunction : build_phase
+    function void write(command_s t);
+        A      = t.A;
+        B      = t.B;
+        op_set = t.op;
+        op_cov.sample();
+        zeros_or_ones_on_ops.sample();
+    endfunction : write
 
-
-    task run_phase(uvm_phase phase);
-        forever begin : sampling_block
-            @(negedge bfm.clk);
-            A      = bfm.A;
-            B      = bfm.B;
-            op_set = bfm.op_set;
-            op_cov.sample();
-            zeros_or_ones_on_ops.sample();
-        end : sampling_block
-    endtask : run_phase
 
 
 endclass : coverage

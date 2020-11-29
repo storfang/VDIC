@@ -20,7 +20,7 @@ import alu_pkg::*;
    bit [31:0]    B; 
    bit          clk;
   // bit          reset_n;
-   wire [2:0]   op;
+   bit [2:0]   op;
   // bit          start;
    bit         done;
    bit [31:0]  result;
@@ -49,6 +49,7 @@ reg [7:0] CTL;
 
 integer i,j,k,l,j_nxt,l_nxt,g ;
 bit [54:0] out, out_nxt;
+bit start;
 
 initial begin
     clk = 0;
@@ -129,6 +130,10 @@ endtask
 task send_calculation_data;
   input [71:0] bytes; //
   begin
+	B={bytes[31:24],bytes[23:16],bytes[15:8],bytes[7:0]};
+	A={bytes[63:56],bytes[55:48],bytes[47:40],bytes[39:32]};
+	op_set=bytes[67:65];// $display("op %b",op);
+	start=1;#30; start=0;
       send_byte(bytes[31:24],0);
       send_byte(bytes[23:16],0);
       send_byte(bytes[15:8],0);
@@ -138,6 +143,7 @@ task send_calculation_data;
       send_byte(bytes[47:40],0);
       send_byte(bytes[39:32],0);
       send_byte(bytes[71:64],1);
+
   end
 endtask
 
@@ -175,6 +181,7 @@ if (l > 0 && l < 55) begin
 end
 else if (l == 0) begin
   l_nxt = 56;
+done = 1'b0;
   end
 else if (sout == 0) begin
   l_nxt = 54;
@@ -206,6 +213,53 @@ endtask
 		end
 	end
 	endtask*/
+
+command_monitor command_monitor_h;
+
+
+function operation_t op2enum();
+    operation_t opi;
+    if( ! $cast(opi,op) )
+        $fatal(1, "Illegal operation on op bus");
+    return opi;
+endfunction : op2enum
+
+
+always @(posedge clk) begin : op_monitor
+    static bit in_command = 0;
+    command_s command;
+    if (start) begin : start_high
+      //  if (!in_command) begin : new_command
+            command.A  = A;
+            command.B  = B;
+            command.op = op2enum();
+//$display("bfm values: A: %0h  B: %0h  op: %s ",A, command.B, command.op.name());
+            command_monitor_h.write_to_monitor(command);
+           // in_command = (command.op);
+       // end : new_command
+    end : start_high
+   // else // start low
+   // in_command            = 0;
+end : op_monitor
+
+/*always @(negedge rst_n) begin : rst_monitor
+    command_s command;
+    command.op = rst_op;
+    if (command_monitor_h != null) //guard against VCS time 0 negedge
+        command_monitor_h.write_to_monitor(command);
+end : rst_monitor
+*/
+result_monitor result_monitor_h;
+
+initial begin : result_monitor_thread
+reset_alu();
+    forever begin
+        @(posedge done) ;begin
+        //if (done)
+	//result = {out[52:45],out[41:34],out[30:23],out[19:12]};
+            result_monitor_h.write_to_monitor(out); end
+    end
+end : result_monitor_thread
 endinterface : alu_bfm
 
 

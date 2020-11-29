@@ -15,8 +15,9 @@
 */
 module top;
 import uvm_pkg::*;
-`include "uvm_macros.svh"
 import alu_pkg::*;
+`include "uvm_macros.svh"
+
    alu_bfm    bfm();
    
    mtm_Alu DUT (.clk(bfm.clk), .rst_n(bfm.rst_n),.sin(bfm.sin), .sout(bfm.sout));

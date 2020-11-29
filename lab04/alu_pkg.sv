@@ -17,31 +17,40 @@
 package alu_pkg;
    import uvm_pkg::*;
 `include "uvm_macros.svh"
-   typedef enum bit[2:0] {and_op  = 3'b000,
-                          or_op = 3'b001,
-                          add_op = 3'b100,
-			  sub_op = 3'b101,
+   typedef enum bit[2:0] {and_op  =    3'b000,
+                          or_op =      3'b001,
+                          add_op =     3'b100,
+			  sub_op =     3'b101,
                           data_error = 3'b010,
-                          op_error = 3'b011,
-			  crc_error = 3'b110,
+                          op_error =   3'b011,
+			  crc_error =  3'b110,
                           no_op = 3'b111} operation_t;
+
+    typedef struct packed {
+        bit[31:0] A;
+        bit[31:0] B;
+        operation_t op;
+    } command_s;
 
 localparam CRC_ERROR = 8'b10100101,
 	DATA_ERROR = 8'b11001001,
 	OP_ERROR = 8'b10010011;
-`include "coverage_alu.svh"
+`include "coverage_alu.svh"//
 `include "base_tester_alu.svh"
-`include "random_tester_alu.svh"
+`include "random_tester_alu.svh"//
 
-`include "add_tester.svh" 
-`include "min_max_tester.svh" 
+`include "add_tester.svh" //
+`include "min_max_tester.svh" //
 //`include "tester_alu.svh"
-`include "scoreboard_alu.svh"
+`include "scoreboard_alu.svh"//
 //`include "testbench_alu.svh"
+`include "driver.svh"
+`include "command_monitor.svh"//
+`include "result_monitor.svh"//
 
-`include "env.svh"
-`include "random_test.svh"
-`include "add_test.svh"
-`include "min_max_test.svh"
+`include "env.svh"//
+`include "random_test.svh"//
+`include "add_test.svh"//
+`include "min_max_test.svh"//
 endpackage : alu_pkg
    

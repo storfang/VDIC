@@ -13,29 +13,32 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class add_test extends uvm_test;
+class result_monitor extends uvm_component;
+    `uvm_component_utils(result_monitor)
 
-    `uvm_component_utils(add_test)
+    uvm_analysis_port #(bit [54:0]) ap;
 
-    env env_h;
+    function void write_to_monitor(bit [54:0] r);
+      //  $display ("RESULT MONITOR: resultA: 0x%0h",r);
+        ap.write(r);
+    endfunction : write_to_monitor
 
     function void build_phase(uvm_phase phase);
-        env_h = env::type_id::create("env_h",this);
-
-        // set the factory to produce a add_tester whenever it would produce
-        // a base_tester
-        base_tester::type_id::set_type_override(add_tester::get_type());
+        virtual alu_bfm bfm;
+        if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
+            $fatal(1, "Failed to get BFM");
+        bfm.result_monitor_h = this;
+        ap                   = new("ap",this);
     endfunction : build_phase
 
     function new (string name, uvm_component parent);
-        super.new(name,parent);
+        super.new(name, parent);
     endfunction : new
 
-    virtual function void start_of_simulation_phase(uvm_phase phase);
-        super.start_of_simulation_phase(phase);
-        // Print the test topology
-        uvm_top.print_topology();
-    endfunction : start_of_simulation_phase
+endclass : result_monitor
 
-endclass
+
+
+
+
 

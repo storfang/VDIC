@@ -13,28 +13,24 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class env extends uvm_env;
-    `uvm_component_utils(env)
+class min_max_test extends uvm_test;
 
-    /* xrun 18.1 warns about object definition from abstract class, will be
-     * upgraded to error in future releases.
-     * This is temporary solution -> sequencer/driver will not have this problem
-     */
-    base_tester tester_h;
+    `uvm_component_utils(min_max_test)
 
-    coverage coverage_h;
-    scoreboard scoreboard_h;
-
-    function void build_phase(uvm_phase phase);
-        tester_h     = base_tester::type_id::create("tester_h",this);
-        coverage_h   = coverage::type_id::create ("coverage_h",this);
-        scoreboard_h = scoreboard::type_id::create("scoreboard_h",this);
-    endfunction : build_phase
+    env env_h;
 
     function new (string name, uvm_component parent);
         super.new(name,parent);
     endfunction : new
 
-endclass
+    function void build_phase(uvm_phase phase);
+        env_h = env::type_id::create("env_h",this);
+    endfunction : build_phase
+    
+    function void end_of_elaboration_phase(uvm_phase phase);
+        super.end_of_elaboration_phase(phase);
+        this.print(); // print test environment topology
+    endfunction : end_of_elaboration_phase
 
+endclass
 
