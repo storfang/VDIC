@@ -13,7 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class coverage extends uvm_subscriber #(command_s);
+class coverage extends uvm_subscriber #(command_transaction);
 
     `uvm_component_utils(coverage)
 
@@ -57,7 +57,7 @@ protected operation_t                op_set;
       option.name = "cg_zeros_or_ones_on_ops";
 
       all_ops : coverpoint op_set {
-         ignore_bins null_ops = { no_op};
+        // ignore_bins null_ops = { no_op};
       }
 
       a_leg: coverpoint A {
@@ -119,7 +119,7 @@ protected operation_t                op_set;
     endfunction : new
 
 
-    function void write(command_s t);
+    function void write(command_transaction t);
         A      = t.A;
         B      = t.B;
         op_set = t.op;

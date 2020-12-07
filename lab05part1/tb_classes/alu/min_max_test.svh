@@ -13,17 +13,18 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class add_tester extends random_tester;
-
-    `uvm_component_utils(add_tester)
-
-    function operation_t get_op();
-        bit [2:0] op_choice;
-        return add_op;
-    endfunction : get_op
+class min_max_test extends random_test;
+    `uvm_component_utils(min_max_test)
 
     function new (string name, uvm_component parent);
-        super.new(name, parent);
+        super.new(name,parent);
     endfunction : new
 
-endclass : add_tester
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        command_transaction::type_id::set_type_override(min_max_transaction::get_type());
+    endfunction : build_phase
+
+endclass
+
+

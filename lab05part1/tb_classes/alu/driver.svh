@@ -17,7 +17,7 @@ class driver extends uvm_component;
     `uvm_component_utils(driver)
 
     virtual alu_bfm bfm;
-    uvm_get_port #(command_s) command_port;
+    uvm_get_port #(command_transaction) command_port;
 
     function void build_phase(uvm_phase phase);
         if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
@@ -26,11 +26,11 @@ class driver extends uvm_component;
     endfunction : build_phase
 
     task run_phase(uvm_phase phase);
-        command_s command;
+        command_transaction command;
         int result;
       bit [31:0]        iA;
       bit [31:0]        iB;
-	bit [7:0]	iCTL;
+	bit [7:0]	iCTL, iCTLf;
       operation_t                  op_set;
 	operation_t                  iop_set;
       bit[54:0]     out;
@@ -46,7 +46,7 @@ class driver extends uvm_component;
    	      idata = {command.B,command.A,1'b1,3'b000};
 	      iCTL[3:0] = bfm.nextCRC4_D68(idata,4'b1111);
 	      bfm.send_calculation_data({iCTL,command.A,command.B});
-		 bfm.recive_output(bfm.out); //#1000;
+		 bfm.recive_output(bfm.out); //#100;
 		bfm.done=1;
            end
            op_error: begin : case_error_op
@@ -54,14 +54,19 @@ class driver extends uvm_component;
    	      idata = {command.B,command.A,1'b1,command.op};
 	      iCTL[3:0] = bfm.nextCRC4_D68(idata,4'b0000);
 	      bfm.send_calculation_data({iCTL,command.A,command.B});
-		 bfm.recive_output(bfm.out); //#1000;
+		 bfm.recive_output(bfm.out); //#100;
 		bfm.done=1;
            end
            data_error: begin : case_error_data
+		iCTL = {1'b0,command.op,4'b0000};
+   	        idata = {command.B,command.A,1'b1,command.op};
+	        iCTL[3:0] = bfm.nextCRC4_D68(idata,4'b0000);
+		bfm.start=1;#30;bfm.start=0;
 		repeat(9) bfm.send_byte(8'b11111111,0);
-		bfm.recive_output(bfm.out);
+		//bfm.start=1;#30;bfm.start=0;
+		bfm.recive_output(bfm.out);//#100;
 		bfm.done=1;
-		  //#1000;
+		  
            end
 	default: begin : case_default
 		iCTL = {1'b0,command.op,4'b0000};
@@ -72,8 +77,8 @@ class driver extends uvm_component;
 		bfm.send_calculation_data({iCTL,command.A,command.B});
 		//#2000;
       		//   bfm.send_op(iA, iB, op_set, result);
-		bfm.recive_output(bfm.out);// $display("out %0h", out);
-		bfm.done=1;//#2000;
+		bfm.recive_output(bfm.out);//#1000;// $display("out %0h", out);
+		bfm.done=1;
 	end endcase
 
         end : command_loop
