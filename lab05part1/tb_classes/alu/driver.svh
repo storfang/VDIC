@@ -42,10 +42,10 @@ class driver extends uvm_component;
 //$display("op get:  op: %s ",command.op.name());
 	 case(command.op)
            crc_error: begin : case_error_crc
-   	      iCTL = {1'b0,3'b000,4'b0000};
-   	      idata = {command.B,command.A,1'b1,3'b000};
+   	      iCTL = {1'b0,3'b001,4'b0000};
+   	      idata = {command.B,command.A,1'b1,3'b001};
 	      iCTL[3:0] = bfm.nextCRC4_D68(idata,4'b1111);
-	      bfm.send_calculation_data({iCTL,command.A,command.B});
+	      bfm.send_calculation_data_fake2({iCTL,command.A,command.B});
 		 bfm.recive_output(bfm.out); //#100;
 		bfm.done=1;
            end
@@ -61,9 +61,7 @@ class driver extends uvm_component;
 		iCTL = {1'b0,command.op,4'b0000};
    	        idata = {command.B,command.A,1'b1,command.op};
 	        iCTL[3:0] = bfm.nextCRC4_D68(idata,4'b0000);
-		bfm.start=1;#30;bfm.start=0;
-		repeat(9) bfm.send_byte(8'b11111111,0);
-		//bfm.start=1;#30;bfm.start=0;
+		bfm.send_calculation_data_fake({iCTL,command.A,command.B});
 		bfm.recive_output(bfm.out);//#100;
 		bfm.done=1;
 		  
