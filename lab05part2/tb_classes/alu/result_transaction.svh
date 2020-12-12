@@ -14,7 +14,7 @@
    limitations under the License.
 */
 class result_transaction extends uvm_transaction;
-    `uvm_object_utils(result_transaction)
+  //  `uvm_object_utils(result_transaction)
 
    int result;
 
@@ -22,7 +22,7 @@ class result_transaction extends uvm_transaction;
       super.new(name);
    endfunction : new
 
-   virtual function void do_copy(uvm_object rhs);
+   function void do_copy(uvm_object rhs);
       result_transaction copied_transaction_h;
       assert(rhs != null) else
         $fatal(1,"Tried to copy null transaction");
@@ -32,13 +32,13 @@ class result_transaction extends uvm_transaction;
       result = copied_transaction_h.result;
    endfunction : do_copy
 
-   virtual function string convert2string();
+   function string convert2string();
       string s;
       s = $sformatf("result: %8h",result);
       return s;
    endfunction : convert2string
 
-   virtual function bit do_compare(uvm_object rhs, uvm_comparer comparer);
+   function bit do_compare(uvm_object rhs, uvm_comparer comparer);
       result_transaction RHS;
       bit    same;
       assert(rhs != null) else

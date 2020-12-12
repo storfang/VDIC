@@ -19,11 +19,18 @@ class driver extends uvm_component;
     virtual alu_bfm bfm;
     uvm_get_port #(command_transaction) command_port;
 
-    function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1, "Failed to get BFM");
-        command_port = new("command_port",this);
-    endfunction : build_phase
+   function void build_phase(uvm_phase phase);
+   
+      alu_agent_config alu_agent_config_h;
+	  
+      if(!uvm_config_db #(alu_agent_config)::get(this, "","config", alu_agent_config_h))
+        `uvm_fatal("DRIVER", "Failed to get config");
+		
+      bfm = alu_agent_config_h.bfm;
+	  
+      command_port = new("command_port",this);
+	  
+   endfunction : build_phase
 
     task run_phase(uvm_phase phase);
         command_transaction command;

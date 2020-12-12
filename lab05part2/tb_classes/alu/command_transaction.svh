@@ -19,12 +19,12 @@ class command_transaction extends uvm_transaction;
    rand bit [31:0]        B;
    rand operation_t         op;
 
-   constraint data { A dist {32'h00000000:=10, [32'h00000001 : 32'hFFFFFFFE]:=1, 32'hFFFFFFFF:=10};
-                     B dist {32'h00000000:=10, [32'h00000001 : 32'hFFFFFFFE]:=1, 32'hFFFFFFFF:=10};} 
+   constraint data { A dist {32'h00000000:=10000000000000000, [32'h00000001 : 32'hFFFFFFFE]:=1, 32'hFFFFFFFF:=10000000000000000};
+                     B dist {32'h00000000:=10000000000000000, [32'h00000001 : 32'hFFFFFFFE]:=1, 32'hFFFFFFFF:=10000000000000000};} 
    
    
 
-   virtual function void do_copy(uvm_object rhs);
+   function void do_copy(uvm_object rhs);
       command_transaction copied_transaction_h;
 
       if(rhs == null) 
@@ -41,7 +41,7 @@ class command_transaction extends uvm_transaction;
 
    endfunction : do_copy
 
-   virtual function command_transaction clone_me();
+   function command_transaction clone_me();
       command_transaction clone;
       uvm_object tmp;
 
@@ -51,7 +51,7 @@ class command_transaction extends uvm_transaction;
    endfunction : clone_me
    
 
-   virtual function bit do_compare(uvm_object rhs, uvm_comparer comparer);
+   function bit do_compare(uvm_object rhs, uvm_comparer comparer);
       command_transaction compared_transaction_h;
       bit   same;
       
@@ -70,7 +70,7 @@ class command_transaction extends uvm_transaction;
    endfunction : do_compare
 
 
-   virtual function string convert2string();
+   function string convert2string();
       string s;
       s = $sformatf("A: %4h  B: %4h op: %s",
                         A, B, op.name());
