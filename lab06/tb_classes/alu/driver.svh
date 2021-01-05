@@ -13,27 +13,18 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class driver extends uvm_component;
+class driver extends uvm_driver #(sequence_item);
     `uvm_component_utils(driver)
 
     virtual alu_bfm bfm;
-    uvm_get_port #(command_transaction) command_port;
 
-   function void build_phase(uvm_phase phase);
-   
-      alu_agent_config alu_agent_config_h;
-	  
-      if(!uvm_config_db #(alu_agent_config)::get(this, "","config", alu_agent_config_h))
-        `uvm_fatal("DRIVER", "Failed to get config");
-		
-      bfm = alu_agent_config_h.bfm;
-	  
-      command_port = new("command_port",this);
-	  
-   endfunction : build_phase
+    function void build_phase(uvm_phase phase);
+        if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
+            `uvm_fatal("DRIVER", "Failed to get BFM")
+    endfunction : build_phase
 
     task run_phase(uvm_phase phase);
-        command_transaction command;
+	sequence_item command;
         int result;
       bit [31:0]        iA;
       bit [31:0]        iB;
@@ -43,8 +34,11 @@ class driver extends uvm_component;
       bit[54:0]     out;
 	reg [67:0] idata;
 
+	void'(begin_tr(command));
+
         forever begin : command_loop
-            command_port.get(command);
+		seq_item_port.get_next_item(command);
+            //command_port.get(command);
            // bfm.send_op(command.A, command.B, command.op, result);
 //$display("op get:  op: %s ",command.op.name());
 	 case(command.op)
@@ -85,7 +79,7 @@ class driver extends uvm_component;
 		bfm.recive_output(bfm.out);//#1000;// $display("out %0h", out);
 		bfm.done=1;
 	end endcase
-
+	seq_item_port.item_done();
         end : command_loop
     endtask : run_phase
 

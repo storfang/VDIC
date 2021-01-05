@@ -36,16 +36,19 @@ localparam CRC_ERROR = 8'b10100101, //a5
 	DATA_ERROR = 8'b11001001, //c9
 	OP_ERROR = 8'b10010011; //93
 
-`include "env_config.svh"
-`include "alu_agent_config.svh"
-`include "command_transaction.svh"//virtual
-`include "random_transaction.svh"//
-`include "add_transaction.svh"//
-`include "min_max_transaction.svh"//
-`include "result_transaction.svh"// virtual uvm object
+`include "sequence_item.svh"//
+typedef uvm_sequencer #(sequence_item) sequencer;
+
+//`include "command_transaction.svh"
+//`include "random_transaction.svh"
+//`include "add_transaction.svh"
+//`include "min_max_transaction.svh"
+`include "result_transaction.svh"
+`include "random_sequence.svh"//
+`include "minmax_sequence.svh"//
 
 `include "coverage_alu.svh"//
-`include "tester.svh"//
+//`include "tester.svh"
 //`include "base_tester_alu.svh"
 //`include "random_tester_alu.svh"
 
@@ -54,14 +57,15 @@ localparam CRC_ERROR = 8'b10100101, //a5
 //`include "tester_alu.svh"
 `include "scoreboard_alu.svh"//
 //`include "testbench_alu.svh"
-`include "driver.svh"//
+`include "driver.svh"
 `include "command_monitor.svh"//
-`include "result_monitor.svh" //
-`include "alu_agent.svh"
+`include "result_monitor.svh"// 
+
 `include "env.svh"//
-`include "dual_test.svh"
-//`include "random_test.svh"
+`include "alu_base_test.svh"//
+`include "random_test.svh"//
 //`include "add_test.svh"
-//`include "min_max_test.svh"
+`include "min_max_test.svh"//
+
 endpackage : alu_pkg
    

@@ -14,8 +14,6 @@
  limitations under the License.
  */
 interface alu_bfm;
-import uvm_pkg::*;
-`include "uvm_macros.svh"
 import alu_pkg::*;
 
    bit [31:0]    A;
@@ -49,7 +47,7 @@ reg [7:0] CTL;
 //reg pass, passes;
 //reg [67:0] data;
 
-int i,j,k,l,j_nxt,l_nxt,g ;
+integer i,j,k,l,j_nxt,l_nxt,g ;
 bit [54:0] out, out_nxt;
 bit start;
 
@@ -156,7 +154,7 @@ task send_calculation_data_fake;
 	A={bytes[63:56],bytes[55:48],bytes[47:40],bytes[39:32]};
 	op_set=bytes[70:68];// $display("op %b",op);
 	start=1;#30; start=0;
-	repeat(9) send_byte(8'b11111111,0);
+	repeat(9) bfm.send_byte(8'b11111111,0);
       /*send_byte(bytes[31:24],0);
       send_byte(bytes[23:16],0);
       send_byte(bytes[15:8],0);
@@ -299,7 +297,7 @@ end : op_monitor
 
 always @(posedge clk) begin : op_monitor
     static bit in_command = 0;
-    command_transaction command;
+    //command_transaction command;
     if (start) begin : start_high
         if (!in_command) begin : new_command
             command_monitor_h.write_to_monitor(A, B, op2enum());

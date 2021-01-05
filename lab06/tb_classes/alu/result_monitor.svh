@@ -23,18 +23,15 @@ class result_monitor extends uvm_component;
         super.new(name, parent);
     endfunction : new
 
-    function void build_phase(uvm_phase phase);
-	
-        alu_agent_config alu_agent_config_h;
-		
-        if(!uvm_config_db #(alu_agent_config)::get(this, "","config", alu_agent_config_h))
-            `uvm_fatal("RESULT MONITOR", "Failed to get CONFIG");
+   function void build_phase(uvm_phase phase);
+      if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
+        `uvm_fatal("DRIVER", "Failed to get BFM");
+      ap  = new("ap",this);
+   endfunction : build_phase
 
-        alu_agent_config_h.bfm.result_monitor_h = this;
-		
-        ap = new("ap",this);
-		
-    endfunction : build_phase
+   function void connect_phase(uvm_phase phase);
+      bfm.result_monitor_h = this;
+   endfunction : connect_phase
 
     function void write_to_monitor(int r);
         result_transaction result_t;

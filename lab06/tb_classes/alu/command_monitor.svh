@@ -18,27 +18,26 @@ class command_monitor extends uvm_component;
 
     virtual alu_bfm bfm;
 
-    uvm_analysis_port #(command_transaction) ap;
+    uvm_analysis_port #(sequence_item) ap;
 
     function new (string name, uvm_component parent);
         super.new(name,parent);
     endfunction
 
     function void build_phase(uvm_phase phase);
-	
-        alu_agent_config alu_agent_config_h;
-		
-        if(!uvm_config_db #(alu_agent_config)::get(this, "","config", alu_agent_config_h))
-            `uvm_fatal("COMMAND MONITOR", "Failed to get CONFIG");
-			
-        alu_agent_config_h.bfm.command_monitor_h = this;
-		
+
+        if(!uvm_config_db #(virtual alu_bfm)::get(null, "*","bfm", bfm))
+            `uvm_fatal("COMMAND MONITOR", "Failed to get BFM")
+
         ap = new("ap",this);
-		
     endfunction : build_phase
 
+    function void connect_phase(uvm_phase phase);
+        bfm.command_monitor_h = this;
+    endfunction : connect_phase
+
     function void write_to_monitor(bit[31:0] A, bit[31:0] B, operation_t op);
-        command_transaction cmd;
+        sequence_item cmd;
         `uvm_info("COMMAND MONITOR",$sformatf("MONITOR: A: %2h  B: %2h  op: %s",
                 A, B, op.name()), UVM_HIGH);
 

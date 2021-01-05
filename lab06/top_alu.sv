@@ -13,13 +13,21 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-class env_config;
- virtual alu_bfm class_bfm;
- virtual alu_bfm module_bfm;
+module top;
+import uvm_pkg::*;
+import alu_pkg::*;
+`include "uvm_macros.svh"
 
- function new(virtual alu_bfm class_bfm, virtual alu_bfm module_bfm);
-    this.class_bfm = class_bfm;
-    this.module_bfm = module_bfm;
- endfunction : new
-endclass : env_config
+   alu_bfm    bfm();
+   
+   mtm_Alu DUT (.clk(bfm.clk), .rst_n(bfm.rst_n),.sin(bfm.sin), .sout(bfm.sout));
 
+
+initial begin
+    uvm_config_db #(virtual alu_bfm)::set(null, "*", "bfm", bfm);
+    run_test();
+end
+endmodule : top
+
+     
+   

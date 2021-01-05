@@ -13,7 +13,7 @@
 #------------------------------------------------------------------------------
 # The list of tests; in GUI mode only the first test is started.
 # TESTS=(random_test);
-TESTS=( dual_test);
+TESTS=(random_test min_max_test);
 #------------------------------------------------------------------------------
 # MAIN
 function main(){
@@ -66,7 +66,7 @@ XRUN_ARGS="\
   -covfile xrun_covfile.txt \
   -uvm \
   +UVM_NO_RELNOTES \
-  +UVM_VERBOSITY=MEDIUM
+  +UVM_VERBOSITY=UVM_LOW
 "
 #>>>
 #------------------------------------------------------------------------------
