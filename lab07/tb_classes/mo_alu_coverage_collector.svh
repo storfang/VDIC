@@ -1,31 +1,48 @@
-/*
- Copyright 2013 Ray Salemi
+/******************************************************************************
+* DVT CODE TEMPLATE: coverage collector
+* Created by moleszkowicz on Jan 22, 2021
+* uvc_company = mo, uvc_name = alu
+*******************************************************************************/
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+`ifndef IFNDEF_GUARD_mo_alu_coverage_collector
+`define IFNDEF_GUARD_mo_alu_coverage_collector
 
- http://www.apache.org/licenses/LICENSE-2.0
+//------------------------------------------------------------------------------
+//
+// CLASS: mo_alu_coverage_collector
+//
+//------------------------------------------------------------------------------
 
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- */
-class coverage extends uvm_subscriber #(sequence_item);
+class mo_alu_coverage_collector extends uvm_component;
 
-    `uvm_component_utils(coverage)
+	// Configuration object
+	protected mo_alu_config_obj m_config_obj;
 
-  //  virtual alu_bfm bfm;
+	// Item collected from the monitor
+	protected mo_alu_item m_collected_item;
+	
+	protected bit                  [31:0] A;
+	protected bit                  [31:0] B;
+	protected operation_t                op_set;
 
-protected bit                  [31:0] A;
-protected bit                  [31:0] B;
-protected operation_t                op_set;
+	// Using suffix to handle more ports
+	`uvm_analysis_imp_decl(_collected_item)
 
-   covergroup op_cov;
+	// Connection to the monitor
+	uvm_analysis_imp_collected_item#(mo_alu_item, mo_alu_coverage_collector) m_monitor_port;
 
-      option.name = "cg_op_cov";
+	// TODO: More items and connections can be added if needed
+
+	`uvm_component_utils(mo_alu_coverage_collector)
+
+	/*covergroup item_cg;
+		option.per_instance = 1;
+		// TODO add coverpoints here
+		
+	endgroup : item_cg
+	*/
+	covergroup op_cov;
+	option.name = "cg_op_cov";
 
       coverpoint op_set {
          // #A1 test all operations
@@ -109,29 +126,41 @@ protected operation_t                op_set;
                                   binsof(a_leg.others) && binsof(b_leg.others);
 
       }
+	endgroup
+	
 
-   endgroup
-
-    function new (string name, uvm_component parent);
+	/*function new(string name, uvm_component parent);
+		super.new(name, parent);
+		item_cg=new;
+		item_cg.set_inst_name({get_full_name(), ".item_cg"});
+	endfunction : new*/
+	
+	function new (string name, uvm_component parent);
         super.new(name, parent);
         op_cov               = new();
         zeros_or_ones_on_ops = new();
     endfunction : new
 
+	virtual function void build_phase(uvm_phase phase);
+		super.build_phase(phase);
 
-    function void write(sequence_item t);
-        A      = t.A;
-        B      = t.B;
-        op_set = t.op;
+		m_monitor_port = new("m_monitor_port",this);
+
+		// Get the configuration object
+		if(!uvm_config_db#(mo_alu_config_obj)::get(this, "", "m_config_obj", m_config_obj))
+			`uvm_fatal("NOCONFIG", {"Config object must be set for: ", get_full_name(), ".m_config_obj"})
+	endfunction : build_phase
+
+	function void write_collected_item(mo_alu_item item);
+		m_collected_item = item;
+		//item_cg.sample();
+		A      = item.A;
+        B      = item.B;
+        op_set = item.op;
         op_cov.sample();
         zeros_or_ones_on_ops.sample();
-    endfunction : write
+	endfunction : write_collected_item
 
+endclass : mo_alu_coverage_collector
 
-
-endclass : coverage
-
-
-
-
-
+`endif // IFNDEF_GUARD_mo_alu_coverage_collector

@@ -1,3 +1,13 @@
+
+# source /cad/env/cadence_path.XCELIUM1909
+#xrun \
+#	-F tb.f \
+#	-F dut.f \
+#	-uvm \
+#	-uvmhome /cad/XCELIUM1909/tools/methodology/UVM/CDNS-1.2/sv \
+#	+UVM_TESTNAME={mo_alu_example_test mo_alu_random_test mo_alu_min_max_test} \
+#	"$@"
+
 #!/bin/bash
 # tested with XCELIUM 19.09
 
@@ -13,7 +23,7 @@
 #------------------------------------------------------------------------------
 # The list of tests; in GUI mode only the first test is started.
 # TESTS=(random_test);
-TESTS=(random_test min_max_test);
+TESTS=(mo_alu_random_test mo_alu_min_max_test);
 #------------------------------------------------------------------------------
 # MAIN
 function main(){
@@ -49,8 +59,8 @@ separator=`perl -e "print \"#\" x $cols"`
 #------------------------------------------------------------------------------
 # simulator arguments #<<<
 XRUN_ARGS="\
-  -f dut_alu.f \
-  -f tb_alu.f \
+  -f dut.f \
+  -f tb.f \
   -v93 \
   +nowarnDSEM2009 \
   +nowarnDSEMEL \
